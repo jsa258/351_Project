@@ -1,0 +1,107 @@
+body {
+  background-color: #ffffff;
+}
+/*begin nav bar*/
+nav {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 17vh;
+  z-index: 20;
+}
+
+.logo {
+  letter-spacing: 3px;
+  font-size: 18px;
+  margin-right: 10%;
+}
+
+
+.logo a {
+  text-decoration: none;
+}
+
+.nav-links {
+  color: black;
+  display: flex;
+  float: left;
+  justify-content: space-between;
+  width: 30%;
+  font-size: 0.875em;
+  text-decoration: none;
+  list-style: none;
+
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  list-style: none;
+  padding-bottom:3%;
+}
+.nav-links a::after{
+  content: '';
+  position: absolute;
+  border-bottom: 1.3px solid black;
+  bottom:0%;
+  width:0%;
+  left: 50%;
+  transition: all 800ms ease;
+}
+.nav-links a:hover:after {
+  left: 0%;
+  width:100%;
+}
+
+/*creating the drop down logo*/
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 0.47vh;
+  margin: 5px;
+}
+
+@media screen and (max-width:840px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav-links {
+    position: absolute;
+    height: 30vh;
+    top: 17vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2em;
+    width: 100%;
+    transform: translateX(-100%);
+    z-index: 20;
+    /*links disappear by transitioning off screen*/
+  }
+
+
+  .burger {
+    display: block;
+    width: 11%;
+
+  }
+
+  .footer-items {
+    margin-top: 20%;
+  }
+
+  .logo header {
+
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
