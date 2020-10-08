@@ -9,9 +9,7 @@
   <link rel="stylesheet" href="css/home.css">
   <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link rel="stylesheet" type="text/css" href="css/lightslider.css">
-  <script type="text/javascript" src="js/Jquery.js"></script>
-  <script type="text/javascript" src="js/lightslider.js"></script>
+
 
   <title>IAT351-Project</title>
 </head>
@@ -38,9 +36,9 @@
     </div>
 
     <ul class="nav-links">
-      <li><a href="Home.html">Home</a></li>
-      <li><a href="Products.html">Products</a></li>
-      <li><a href="Login.html">Login</a></li>
+      <li><a href="">Home</a></li>
+      <li><a href="">Products</a></li>
+      <li><a href="">Login</a></li>
     </ul>
 
 
@@ -264,8 +262,8 @@
      <div class="footer-items">
        <h6> Quick Links </h6>
        <ul>
-         <li><a href="home.html">Home</a></li>
-         <li><a href="productlist.html">Products</a></li>
+         <li><a href="">Home</a></li>
+         <li><a href="">Products</a></li>
        </ul>
      </div>
    </div>

@@ -55,6 +55,8 @@ nav {
   left: 0%;
   width:100%;
 }
+/*end nav bar*/
+
 .HomeBanner{
   display: flex;
   background-color: grey;
