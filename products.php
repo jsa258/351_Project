@@ -4,70 +4,36 @@
  <html>
  <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="css/products.css">
+ <link rel="stylesheet" href="css/home.css">
+ <link rel="stylesheet" href="css/main.css">
+ <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
  <!-- Code retrieved from https://www.w3schools.com/howto/howto_js_filter_elements.asp -->
- <style>
- * {
-   box-sizing: border-box;
- }
-
- body {
-   background-color: #f1f1f1;
-   padding: 20px;
-   font-family: Arial;
- }
-
- /* Center website */
- .main {
-   max-width: 1000px;
-   margin: auto;
- }
-
- .row {
-   margin: 10px -16px;
- }
-
- /* Add padding BETWEEN each column */
- .row,
- .row > .column {
-   padding: 8px;
- }
-
- /* Create three equal columns */
- .column {
-   float: left;
-   width: 33.33%;
-   display: none; /* Hide all elements by default */
- }
-
- /* Clear floats after rows */
- .row:after {
-   content: "";
-   display: table;
-   clear: both;
- }
-
- /* Content */
- .content {
-   background-color: white;
-   padding: 10px;
- }
-
- /* The "show" class is added to the filtered elements */
- .show {
-   display: block;
- }
-
- .filters {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-}
- </style>
  </head>
  <body>
+   <!-- NAVIGATION STARTS -->
+   <nav>
+     <!--burger is the icon for the drop down menu-->
+     <div class="burger">
+       <div class="line1">
+       </div>
+       <div class="line2">
+       </div>
+       <div class="line3">
+       </div>
+     </div>
+     <div class="logo">
+       <a href="landing.html">
+         <header>XGAMES</header>
+       </a>
+     </div>
+     <ul class="nav-links">
+       <li><a href="">Home</a></li>
+       <li><a href="">Products</a></li>
+       <li><a href="">Login</a></li>
+     </ul>
+   </nav>
 
 <h2>PRODUCTS</h2>
 
@@ -87,71 +53,189 @@
  <!-- Products Grid -->
  <div class="row">
    <div class="column switch">
-     <div class="content">
-       <img src="images/switch1.png" alt="Switch" style="width:100%">
-       <h4>Transistor</h4>
-       <p>Switch</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/switch1.png" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Transistor</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
    <div class="column switch">
-     <div class="content">
-     <img src="images/switch2.png" alt="Switch" style="width:100%">
-       <h4>Animal Crossing New Horizon</h4>
-       <p>Switch</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/switch2.png" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Animal Crossing New Horizon</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
    <div class="column switch">
-     <div class="content">
-     <img src="images/switch3.png" alt="Switch" style="width:100%">
-       <h4>Killer Queen Black</h4>
-       <p>Switch</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/switch3.png" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Killer Queen Black</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
 
    <div class="column xbox">
-     <div class="content">
-       <img src="images/xbox1.jpg" alt="XBOX" style="width:100%">
-       <h4>Crash Bandicoot 4</h4>
-       <p>XBOX ONE</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/xbox1.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Crash Bandicoot 4</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
+  </div>
+   <div class="column xbox">
+     <div class="product-item">
+       <div class="product-img"><img src="img/xbox2.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Cyberpunk 2077</a>
+       </div>
+       <a href="#" class="price">$50</a>
+     </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
    <div class="column xbox">
-     <div class="content">
-     <img src="images/xbox2.jpg" alt="XBOX" style="width:100%">
-       <h4>Cyberpunk 2077</h4>
-       <p>XBOX ONE</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/xbox3.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Call of Duty Black OPS Cold War</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
-   </div>
-   <div class="column xbox">
-     <div class="content">
-     <img src="images/xbox3.jpg" alt="XBOX" style="width:100%">
-       <h4>Call of Duty Black OPS Cold War</h4>
-       <p>XBOX ONE</p>
-     </div>
-   </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
+    </div>
 
    <div class="column ps4">
-     <div class="content">
-       <img src="images/ps41.jpg" alt="PS4" style="width:100%">
-       <h4>Spider-man Miles Morales</h4>
-       <p>PS4</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/ps41.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Spider-man Miles Morales</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
+  </div>
+   <div class="column ps4">
+     <div class="product-item">
+       <div class="product-img"><img src="img/ps42.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Sackboy A Big Adventure</a>
+       </div>
+       <a href="#" class="price">$50</a>
+     </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
    <div class="column ps4">
-     <div class="content">
-     <img src="images/ps42.jpg" alt="PS4" style="width:100%">
-       <h4>Sackboy A Big Adventure</h4>
-       <p>PS4</p>
+     <div class="product-item">
+       <div class="product-img"><img src="img/ps43.jpg" alt=""></div>
+       <div class="detail-box">
+         <div class="type">
+           <span>New Arrival</span>
+           <a href="#">Star Wars Squadrons</a>
+       </div>
+       <a href="#" class="price">$50</a>
      </div>
-   </div>
-   <div class="column ps4">
-     <div class="content">
-     <img src="images/ps43.jpg" alt="PS4" style="width:100%">
-       <h4>Star Wars Squadrons</h4>
-       <p>PS4</p>
-     </div>
+       <div class="review">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        <div class="overlaying">
+          <a href="#" class="buy-btn1">Buy Now</a>
+        </div></div></div>
    </div>
  <!-- END GRID -->
+ </div>
+ <!--begin footer-->
+ <div class="footer">
+   <div class="inner-footer">
+
+     <div class="footer-items">
+       <h5> XGames </h5>
+       <p> Description of the website</p>
+     </div>
+     <div class="footer-items">
+       <div class="contact">
+         <h6> Contact Us </h6>
+         <span><i class="fas fa-envelope"></i> info@gmail.com</span>
+         <i class="fas fa-phone"></i>604-232-3421
+       </div>
+     </div>
+
+     <div class="footer-items">
+       <div class="social">
+         <h6> Social Media </h6>
+         <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+         <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+         <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+       </div>
+     </div>
+
+     <div class="footer-items">
+       <h6> Quick Links </h6>
+       <ul>
+         <li><a href="">Home</a></li>
+         <li><a href="">Products</a></li>
+       </ul>
+     </div>
+   </div>
+   <div class="footer-bottom">
+     Copyright &copy;
+   </div>
  </div>
  <!-- END MAIN -->
  </div>
