@@ -152,3 +152,10 @@ nav {
   font-size: 0.9375em;
   text-align: center;
 }
+
+.center {
+  margin: auto;
+  width: 40%;
+  left:50%;
+  align-items: baseline;
+}
