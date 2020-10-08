@@ -1,0 +1,154 @@
+body {
+  background-color: #ffffff;
+  font-family: 'Roboto';
+}
+/*Fonts
+Nunito - nav links
+Roboto - headings and descriptions , feel free to change it !
+*/
+
+
+/*begin nav bar*/
+nav {
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 17vh;
+  z-index: 20;
+}
+
+.logo {
+  letter-spacing: 3px;
+  font-size: 18px;
+  margin-right: 10%;
+}
+
+
+.logo a {
+  text-decoration: none;
+}
+
+.nav-links {
+  font-family: 'Nunito';
+  color: black;
+  display: flex;
+  float: left;
+  justify-content: space-between;
+  width: 23%;
+  font-size: 0.875em;
+  text-decoration: none;
+  list-style: none;
+
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  list-style: none;
+  padding-bottom:3%;
+}
+.nav-links a::after{
+  content: '';
+  position: absolute;
+  border-bottom: 1.3px solid black;
+  bottom:0%;
+  width:0%;
+  left: 50%;
+  transition: all 800ms ease;
+}
+.nav-links a:hover:after {
+  left: 0%;
+  width:100%;
+}
+/*end nav bar*/
+
+
+
+/*
+    begin footer
+    */
+.footer {
+  width: 100%;
+  padding: 40px 20px 0px 90px;
+  text-align: justify;
+  box-sizing: border-box;
+  display: block;
+  color: black;
+}
+
+.inner-footer {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.footer-items {
+  width: 25%;
+  padding: 0px 15px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.footer-items p {
+  color: grey;
+  text-align: left;
+  line-height: 25px;
+  font-size: 14px;
+  width: 90%;
+}
+
+.footer-items ul {
+  list-style: none;
+  font-size: 13px;
+}
+
+.footer-items ul li, .footer-items ul li a {
+  text-decoration: none;
+  margin: 10px 0px;
+  color: black;
+}
+
+.footer-items a:hover {
+  border-bottom: 1px solid black;
+}
+
+.footer-items h5, .footer-items h6 {
+  font-size: 0.9375em;
+}
+
+.footer-items h6 {
+  text-align: justify;
+  text-transform: uppercase;
+}
+
+.contact i {
+  margin: 10px 10px;
+}
+
+.contact span {
+  display: block;
+}
+
+.social i {
+  margin: 10px 10px 10px 10px;
+  font-size: 1.25em;
+  flex-direction: row;
+  color: black;
+}
+
+.footer-bottom {
+  width: 100%;
+  padding: 10px 0px;
+  margin: 0px;
+  font-size: 0.9375em;
+  text-align: center;
+}

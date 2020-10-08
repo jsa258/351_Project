@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
