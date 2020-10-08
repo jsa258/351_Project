@@ -159,9 +159,9 @@
 
   <!-- PRODUCT SLIDER STARTS -->
   <!--slider-->
-  <section class="subheading">
-       <h1>Your Favorite Items</h1>
-     </section>
+ <section class="subheading">
+  <h1>Your Favorite Items</h1>
+ </section>
  <section class="favproduct">
   <!--item1-->
   <section class="item-a">
