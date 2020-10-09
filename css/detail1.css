@@ -31,7 +31,6 @@
 }
 
 .collection-title {
-  font-family: 'Lato', sans-serif;
   font-weight: 300;
   margin-bottom: 0.5em;
   letter-spacing: 0.1em;
@@ -40,7 +39,6 @@
 }
 
 .product-title {
-  font-family: 'Lato', sans-serif;
   margin-bottom: 0.5em;
   font-size: 1.4em;
 }
@@ -53,7 +51,6 @@
 }
 
 .product-text {
-  font-family: 'Lato', sans-serif;
   margin: 1em 0em;
   letter-spacing: 0.1em;
   font-size: 0.8em;

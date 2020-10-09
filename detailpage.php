@@ -61,7 +61,7 @@
 <!--
 -->
     <div class="text-section">
-      <p class="collection-title">TOP SELLERS</p>
+      <p class="collection-title">NEW ARRIVALS</p>
     <div class="top-section">
       <p class="product-title">Xbox Wireless Controller – Robot White</p>
       <div class="review">
