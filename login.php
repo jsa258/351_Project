@@ -1,90 +1,58 @@
-<!DOCTYPE HTML>  
 <html>
 <head>
-<style>
-.error {color: #FF0000;}
-</style>
+<title> Login Page   </title>
 </head>
-<body>  
-
-<?php
-// Reference from https://www.w3schools.com/php/php_form_complete.asp
-$emailErr = $passwordErr = "";
-$useremail = $userpassword = "";
-
-  
-  if (empty($_POST["useremail"])) {
-    $emailErr = "Email is required";
-  } else {
-    $useremail = test_input($_POST["useremail"]);
-  }
-
-  
-  if (empty($_POST["userpassword"])) {
-    $passwordErr = "Password is required";
-  } else {
-    $userpassword = test_input($_POST["userpassword"]);
-  }
-
-
-function test_input($data) {
-    
-  return $data;
-  
-}
-
-$file = 'login.txt';
-if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
-	 // fill in your own code. Hint! each character is 1 byte
-    $content = fread($handle,filesize("login.txt"));
-    fclose($handle); 
-    echo $content;
-}
-//print the string here
-
-
- $useremail = "";
- $userpassword = "";
-
- $login_info = "$useremail : $userpassword";
-
- $file = 'login.txt';
- if($handle = fopen($file, 'r')) {
-   $content = fread($handle,filesize("login.txt"));
-
-   if (stristr($file,$login_info)) {
-
-    echo "logged in";
-    }
-    
-     else {
-    
-    echo "$useremail";
-    
-     }
-
-   fclose($handle);
-}
-
-
- 
-
-
-?>
-
-<h2>Login Page</h2>
-<p><span class="error"></span></p>
-<form method="post">  
-  E-mail: <input type="text" name="useremail" value="<?php echo $useremail;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Password: <input type="text" name="userpassword" value="<?php echo $userpassword;?>">
-  <span class="error">* <?php echo $passwordErr;?></span>
-  <br><br> 
-
-  <input type="submit" name="submit" value="Submit">  
+<body>
+<form action="" method="post">
+    <table width="200" border="0">
+  <tr>
+    <td>  UserName</td>
+    <td> <input type="text" name="user-name" > </td>
+  </tr>
+  <tr>
+    <td> PassWord  </td>
+    <td><input type="password" name="pass-word"></td>
+  </tr>
+  <tr>
+    <td> <input type="submit" name="login" value="LOGIN"></td>
+    <td></td>
+  </tr>
+</table>
 </form>
-
-
 </body>
 </html>
+
+<?php  session_start(); ?>
+
+<?php
+
+if(isset($_POST['login']))   // it checks whether the user clicked login button or not
+{
+  $email = $_POST['user-name'];
+  $password = $_POST['pass-word'];
+  $userlist = file ('data.txt');
+
+  $name = "";
+  $number = "";
+
+  $success = false;
+  foreach ($userlist as $user) {
+      $user_details = explode('|', $user);
+      if ($user_details[0] == $email && $user_details[1] == $password) {
+          $success = true;
+          $name = $user_details[2];
+          $number = $user_details[3];
+          break;
+      }
+  }
+
+  if ($success) {
+      echo "<br> Hi $email you have been logged in. <br>";
+      ?> "Click here to <a href="logout.php" tite="Logout">Logout.<?php
+
+  } else {
+      echo "<br> You have entered the wrong username or password. Please try again. <br>";
+  }
+
+}
+?>
