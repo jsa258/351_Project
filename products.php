@@ -7,33 +7,26 @@
  <link rel="stylesheet" href="css/products.css">
  <link rel="stylesheet" href="css/home.css">
  <link rel="stylesheet" href="css/main.css">
- <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
  <!-- Code retrieved from https://www.w3schools.com/howto/howto_js_filter_elements.asp -->
  </head>
  <body>
+
    <!-- NAVIGATION STARTS -->
    <nav>
-     <!--burger is the icon for the drop down menu-->
-     <div class="burger">
-       <div class="line1">
-       </div>
-       <div class="line2">
-       </div>
-       <div class="line3">
-       </div>
-     </div>
      <div class="logo">
-       <a href="landing.html">
+       <a href="">
          <header>XGAMES</header>
        </a>
      </div>
+
      <ul class="nav-links">
        <li><a href="">Home</a></li>
        <li><a href="">Products</a></li>
        <li><a href="">Login</a></li>
      </ul>
    </nav>
+   <!-- NAVIGATION ENDS -->
 
 <h2>PRODUCTS</h2>
 
@@ -205,28 +198,28 @@
    <div class="inner-footer">
 
      <div class="footer-items">
-       <h5> XGames </h5>
-       <p> Description of the website</p>
+       <h2> XGAMES </h2>
+       <p> Sells The Trendiest Video Games</p>
      </div>
      <div class="footer-items">
        <div class="contact">
-         <h6> Contact Us </h6>
-         <span><i class="fas fa-envelope"></i> info@gmail.com</span>
-         <i class="fas fa-phone"></i>604-232-3421
+         <h3> Contact Us </h3>
+         <span><i class="fas fa-envelope"></i>xgames@gmail.com</span>
+         <i class="fas fa-phone"></i>604-123-1244
        </div>
      </div>
 
      <div class="footer-items">
        <div class="social">
-         <h6> Social Media </h6>
-         <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+         <h3> Social Media </h3>
          <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+         <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
        </div>
      </div>
 
      <div class="footer-items">
-       <h6> Quick Links </h6>
+       <h3> Quick Links </h3>
        <ul>
          <li><a href="">Home</a></li>
          <li><a href="">Products</a></li>
