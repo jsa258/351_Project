@@ -1,14 +1,13 @@
 <!DOCTYPE php>
 <?php
  ?>
- 
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -20,27 +19,26 @@
 <body>
 
   <!-- NAVIGATION STARTS -->
-
   <nav>
     <div class="logo">
-      <a href="">
+      <a href="homepage.php">
         <header>XGAMES</header>
       </a>
     </div>
 
     <ul class="nav-links">
-      <li><a href="">Home</a></li>
-      <li><a href="">Products</a></li>
-      <li><a href="">Login</a></li>
+      <li><a href="homepage.php">Home</a></li>
+      <li><a href="products.php">Products</a></li>
+      <li><a href="login.php">Login</a></li>
     </ul>
   </nav>
-
-
   <!-- NAVIGATION ENDS -->
 
  <!-- BANNER STARTS -->
  <div class="HomeBanner">
-   <div></div>
+   <div class="banner-img">
+    <img src="img/banner.jpg" alt=""> <!-- image obtained from https://www.ebgames.ca/Views/Locale/Content/Images/flyers/2018/theamayzingsale/English/images/page1/row4_banner.jpg-->
+   </div>
  </div>
  <!-- BANNER ENDS -->
 
@@ -53,12 +51,12 @@
   <!-- product1 -->
   <div class="product-item">
     <div class="product-img">
-     <img src="img/2-1.jpg" alt="">
+     <a href="detailpage.php"><img src="img/1-2.jpg" alt=""></a>
     </div>
     <div class="detail-box">
       <div class="type">
         <span>New Arrival</span>
-        <a href="#">Animal Crossing</a>
+        <a href="#">Xbox Wireless Controller</a>
       </div>
     <a href="#" class="price">$50</a>
    </div>
@@ -69,19 +67,19 @@
      <i class="far fa-star"></i>
      <i class="far fa-star"></i>
      <div class="overlaying">
-     <a href="#" class="buy-btn1">Buy Now</a>
+     <a href="detailpage.php" class="buy-btn1">Buy Now</a>
      </div>
    </div>
   </div>
   <!-- product2 -->
   <div class="product-item">
     <div class="product-img">
-     <img src="img/2-1.jpg" alt="">
+     <img src="img/switch1.png" alt="">
     </div>
     <div class="detail-box">
       <div class="type">
         <span>New Arrival</span>
-        <a href="#">Animal Crossing</a>
+        <a href="#">Transistor</a>
     </div>
     <a href="#" class="price">$50</a>
   </div>
@@ -99,12 +97,12 @@
   <!-- product3 -->
   <div class="product-item">
     <div class="product-img">
-     <a href="detail.html"><img src="img/2-1.jpg" alt=""></a>
+     <a href="detailpage.php"><img src="img/xbox2.jpg" alt=""></a>
     </div>
     <div class="detail-box">
       <div class="type">
         <span>New Arrival</span>
-        <a href="#">Animal Crossing</a>
+        <a href="#">Cyberpunk 2077</a>
     </div>
     <a href="#" class="price">$50</a>
   </div>
@@ -122,12 +120,12 @@
   <!-- product4 -->
   <div class="product-item">
     <div class="product-img">
-     <a href="detail.html"><img src="img/2-1.jpg" alt=""></a>
+     <a href="detail.html"><img src="img/xbox1.jpg" alt=""></a>
     </div>
     <div class="detail-box">
       <div class="type">
         <span>New Arrival</span>
-        <a href="#">Animal Crossing</a>
+        <a href="#">Crash Bandicoot 4</a>
     </div>
     <a href="#" class="price">$50</a>
   </div>
@@ -172,7 +170,7 @@
   <section class="fav-item">
     <div class="box">
       <div class="slide-img">
-        <img src="img/2-1.jpg">
+        <img src="img/ps41.jpg">
         <div class="overlay">
           <a href="#" class="buy-btn">Remove</a>
           <a href="#" class="buy-btn">Buy Now</a>
@@ -180,7 +178,7 @@
       </div>
       <div class="detail-box">
         <div class="type">
-          <a href="#">Animal Crossing</a>
+          <a href="#">Spider-man Miles Morales</a>
       </div>
       <a href="#" class="price">$50</a>
     </div>
@@ -190,7 +188,7 @@
   <section class="fav-item">
     <div class="box">
       <div class="slide-img">
-        <img src="img/2-1.jpg">
+        <img src="img/ps43.jpg">
         <div class="overlay">
           <a href="#" class="buy-btn">Remove</a>
           <a href="#" class="buy-btn">Buy Now</a>
@@ -198,7 +196,7 @@
       </div>
       <div class="detail-box">
         <div class="type">
-          <a href="#">Animal Crossing</a>
+          <a href="#">Star Wars Squadrons</a>
       </div>
       <a href="#" class="price">$50</a>
     </div>
@@ -208,7 +206,7 @@
   <section class="fav-item">
     <div class="box">
       <div class="slide-img">
-        <img src="img/2-1.jpg">
+        <img src="img/xbox3.jpg">
         <div class="overlay">
           <a href="#" class="buy-btn">Remove</a>
           <a href="#" class="buy-btn">Buy Now</a>
@@ -216,7 +214,7 @@
       </div>
       <div class="detail-box">
         <div class="type">
-          <a href="#">Animal Crossing</a>
+          <a href="#">Call of duty</a>
       </div>
       <a href="#" class="price">$50</a>
     </div>

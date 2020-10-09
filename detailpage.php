@@ -1,7 +1,7 @@
 <!DOCTYPE php>
 <?php
  ?>
- 
+
 <html lang="en">
 
 <head>
@@ -21,22 +21,22 @@
 
   <nav>
     <div class="logo">
-      <a href="">
+      <a href="homepage.php">
         <header>XGAMES</header>
       </a>
     </div>
 
     <ul class="nav-links">
-      <li><a href="">Home</a></li>
-      <li><a href="">Products</a></li>
-      <li><a href="">Login</a></li>
+      <li><a href="homepage.php">Home</a></li>
+      <li><a href="products.php">Products</a></li>
+      <li><a href="login.php">Login</a></li>
     </ul>
   </nav>
 
 
   <!-- NAVIGATION ENDS -->
 
-
+  <!-- PRODUCT DESCRIPTION STARTS -->
   <div class="info-section">
     <div class="img-section">
     <img src="img/1-2.jpg" alt=" " class="img-placeholder">

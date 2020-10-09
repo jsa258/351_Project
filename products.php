@@ -15,15 +15,15 @@
    <!-- NAVIGATION STARTS -->
    <nav>
      <div class="logo">
-       <a href="">
+       <a href="homepage.php">
          <header>XGAMES</header>
        </a>
      </div>
 
      <ul class="nav-links">
-       <li><a href="">Home</a></li>
-       <li><a href="">Products</a></li>
-       <li><a href="">Login</a></li>
+       <li><a href="homepage.php">Home</a></li>
+       <li><a href="products.php">Products</a></li>
+       <li><a href="login.php">Login</a></li>
      </ul>
    </nav>
    <!-- NAVIGATION ENDS -->
@@ -46,7 +46,7 @@
  <!-- Products Grid -->
  <div class="row">
    <div class="column switch">
-     <div class="product-item">
+     <div class="product-item" id="a">
        <div class="product-img"><img src="img/switch1.png" alt=""></div>
        <div class="detail-box">
          <div class="type">
