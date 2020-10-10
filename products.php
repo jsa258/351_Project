@@ -7,7 +7,7 @@
  <link rel="stylesheet" href="css/products.css">
  <link rel="stylesheet" href="css/home.css">
  <link rel="stylesheet" href="css/main.css">
- <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@100&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
  <!-- Code retrieved from https://www.w3schools.com/howto/howto_js_filter_elements.asp -->
  </head>
