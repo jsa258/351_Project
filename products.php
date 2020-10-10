@@ -29,9 +29,11 @@
    </nav>
    <!-- NAVIGATION ENDS -->
 
-<h2>PRODUCTS</h2>
+
+<div class="contain">
 
 <div class="filters">
+  <h2>PRODUCTS</h2>
   <h3>Consoles</h3>
  <input type="checkbox" id="all" name="console" value="all" onclick="filterSelection('all')" checked>
  <label for="all">Show All</label><br>
@@ -280,6 +282,7 @@
           <a href="#" class="buy-btn1">Buy Now</a>
         </div></div></div>
    </div>
+ </div>
  <!-- END GRID -->
  </div>
  <!--begin footer-->
