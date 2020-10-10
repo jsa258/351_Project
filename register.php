@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <style>
 
@@ -152,8 +153,8 @@ function test_input($data) {
     <div class="footer-items">
       <h3> Quick Links </h3>
       <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Products</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
       </ul>
     </div>
   </div>
