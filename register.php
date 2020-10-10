@@ -82,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $password = test_input($_POST["password"]);
   }
+  echo "<meta http-equiv=\"refresh\" content=\"1; URL=index.php\" />";
 }
 
 //Saving data to textfile https://www.dummies.com/programming/php/how-to-write-a-basic-text-file-in-php-for-html5-and-css3-programming/

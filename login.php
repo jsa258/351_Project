@@ -98,9 +98,8 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
      $fp = fopen("user.txt", "a");
      fwrite($fp, $saveData);
      fclose($fp);
+     echo "<meta http-equiv=\"refresh\" content=\"1; URL=index.php\" />";
 
-      echo "<br> Hi $email you have been logged in. <br>";
-      ?> "Click here to <a href="logout.php" tite="Logout">Logout.<?php
 
   } else {
       echo "<div class=\"center\"> You have entered the wrong username or password. Please try again. </div>";
