@@ -1,16 +1,18 @@
 body {
   background-color: #ffffff;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
 }
 /*Fonts
 Nunito - nav links
-Roboto - headings and descriptions , feel free to change it !
+Roboto - headings and descriptions
+font-family: 'Nunito', sans-serif;
+font-family: 'Roboto', sans-serif;
 */
 
 
 /*begin nav bar*/
 nav {
-  font-family: 'Nunito';
+  font-family: 'Nunito', sans-serif;
   font-weight: bold;
   text-decoration: none;
   display: flex;

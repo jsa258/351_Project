@@ -7,6 +7,7 @@
  <link rel="stylesheet" href="css/products.css">
  <link rel="stylesheet" href="css/home.css">
  <link rel="stylesheet" href="css/main.css">
+ <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@100&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
  <!-- Code retrieved from https://www.w3schools.com/howto/howto_js_filter_elements.asp -->
  </head>
@@ -15,13 +16,13 @@
    <!-- NAVIGATION STARTS -->
    <nav>
      <div class="logo">
-       <a href="homepage.php">
+       <a href="index.php">
          <header>XGAMES</header>
        </a>
      </div>
 
      <ul class="nav-links">
-       <li><a href="homepage.php">Home</a></li>
+       <li><a href="index.php">Home</a></li>
        <li><a href="products.php">Products</a></li>
        <li><a href="login.php">Login</a></li>
      </ul>
@@ -309,8 +310,8 @@
      <div class="footer-items">
        <h3> Quick Links </h3>
        <ul>
-         <li><a href="">Home</a></li>
-         <li><a href="">Products</a></li>
+         <li><a href="index.php">Home</a></li>
+         <li><a href="products.php">Products</a></li>
        </ul>
      </div>
    </div>

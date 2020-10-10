@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/detail1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
   <title>IAT351-Project</title>
@@ -141,8 +142,8 @@
        <div class="footer-items">
          <h3> Quick Links </h3>
          <ul>
-           <li><a href="">Home</a></li>
-           <li><a href="">Products</a></li>
+           <li><a href="index.php">Home</a></li>
+           <li><a href="products.php">Products</a></li>
          </ul>
        </div>
      </div>
