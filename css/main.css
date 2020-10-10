@@ -8,7 +8,6 @@ Roboto - headings and descriptions , feel free to change it !
 */
 
 
-
 /*begin nav bar*/
 nav {
   font-family: 'Nunito';
@@ -154,11 +153,4 @@ nav {
   margin: 0px;
   font-size: 0.9375em;
   text-align: center;
-}
-
-.center {
-  margin: auto;
-  width: 40%;
-  left:50%;
-  align-items: baseline;
 }

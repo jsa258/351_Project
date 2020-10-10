@@ -1,0 +1,57 @@
+
+.login-box, .register-container{
+  display: flex;
+  justify-content: center;
+  margin: 1% 0%;
+}
+.login-container{
+  display: flex;
+  justify-content:flex-start;
+  width:400px;
+  margin-left: 5%;
+  margin-bottom: 10%;
+}
+.login p{
+  font-size: 12px;
+}
+
+.login-container input{
+  margin: 2%;
+}
+
+.form_input_center{
+    width: 400px;
+}
+
+label {
+  margin-bottom: 0.75em;
+  padding-right: 0.4em;
+  display: block;
+  color: black;
+}
+
+.login-container input{
+    width: 150%;
+}
+
+ input {
+  width: 60%;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0.5em 0.7em
+}
+
+.error{
+  display: block;
+  font-size: 11px;
+}
+.register-container .buy-btn1{
+  width: 150px;
+  height:35px;
+}
+.login-container .buy-btn1{
+  width: 80px;
+  height:30px;
+}

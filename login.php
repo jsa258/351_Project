@@ -1,24 +1,16 @@
+<!DOCTYPE php>
 <html>
 <head>
 <title> Login Page   </title>
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 
 <body>
   <!-- NAVIGATION STARTS -->
-
   <nav>
-    <!--burger is the icon for the drop down menu-->
-    <div class="burger">
-      <div class="line1">
-      </div>
-      <div class="line2">
-      </div>
-      <div class="line3">
-      </div>
-    </div>
-
     <div class="logo">
       <a href="index.php">
         <header>XGAMES</header>
@@ -28,7 +20,7 @@
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
       <li><a href="products.php">Products</a></li>
-      <?php 
+      <?php
         $file = 'user.txt';
         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
            // fill in your own code. Hint! each character is 1 byte
@@ -36,46 +28,42 @@
             fclose($handle);
         }
         if(trim(file_get_contents('user.txt')) == false){
-         
+
          echo "<li><a href=\"login.php\">Login</a></li>";
         }else{
           echo "Welcome  $content";
           echo "<li><a href=\"logout.php\">Logout</a></li>";
         }
-
       ?>
     </ul>
-
-
-
   </nav>
-  <!--link to script needed to create the drop down effect-->
-  <script src="js/responsive.js"></script>
 
   <!-- NAVIGATION ENDS -->
 
-  
-  <div class="center"> 
-  <a href="register.php">Register</a>
-
-  </div>
-  <div class="center">
+    <!-- FORMS START-->
+<div class="login-box">
+  <div class="login-container">
 <form action="" method="post">
-    <table width="200" border="0">
+  <h2>Login</h2>
+  <table width="200" border="0">
   <tr>
-    <td>  Email</td>
+    <td> <label for="inputemail">Email</label></td>
     <td> <input type="text" name="email" > </td>
   </tr>
   <tr>
-    <td> PassWord  </td>
+    <td><label for="inputpassword">Password</label></td>
     <td><input type="password" name="pass-word"></td>
   </tr>
   <tr>
-    <td> <input type="submit" name="login" value="LOGIN"></td>
+    <td> <input type="submit" name="login" value="LOGIN" class="buy-btn1"></td>
     <td></td>
   </tr>
 </table>
+<div class="login">
+<p> Don't have an account? <a href="register.php">Register here</a></p>
+</div>
 </form>
+</div>
 </div>
 
 <?php  session_start(); ?>
@@ -105,7 +93,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
   if ($success) {
     $saveData = <<< HERE
     $name
-    
+
     HERE;
      $fp = fopen("user.txt", "a");
      fwrite($fp, $saveData);
@@ -120,45 +108,44 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
 
 }
 ?>
+  <!-- FORMS ENDS-->
 
- <!--begin footer-->
- <div class="footer">
-   <div class="inner-footer">
+<!--begin footer-->
+<div class="footer">
+  <div class="inner-footer">
 
-     <div class="footer-items">
-       <h5> XGames </h5>
-       <p> Description of the website</p>
-     </div>
-     <div class="footer-items">
-       <div class="contact">
-         <h6> Contact Us </h6>
-         <span><i class="fas fa-envelope"></i> info@gmail.com</span>
-         <i class="fas fa-phone"></i>604-232-3421
-       </div>
-     </div>
+    <div class="footer-items">
+      <h2> XGAMES </h2>
+      <p> Sells The Trendiest Video Games</p>
+    </div>
+    <div class="footer-items">
+      <div class="contact">
+        <h3> Contact Us </h3>
+        <span><i class="fas fa-envelope"></i>xgames@gmail.com</span>
+        <i class="fas fa-phone"></i>604-123-1244
+      </div>
+    </div>
 
-     <div class="footer-items">
-       <div class="social">
-         <h6> Social Media </h6>
-         <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-         <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-         <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-       </div>
-     </div>
+    <div class="footer-items">
+      <div class="social">
+        <h3> Social Media </h3>
+        <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
 
-     <div class="footer-items">
-       <h6> Quick Links </h6>
-       <ul>
-         <li><a href="index.html">Home</a></li>
-         <li><a href="products.html">Products</a></li>
-       </ul>
-     </div>
-   </div>
-   <div class="footer-bottom">
-     Copyright &copy;
-   </div>
- </div>
+    <div class="footer-items">
+      <h3> Quick Links </h3>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Products</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Copyright &copy;
+  </div>
+</div>
 </body>
 </html>
-
-

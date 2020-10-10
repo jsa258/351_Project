@@ -21,13 +21,13 @@
 
   <nav>
     <div class="logo">
-      <a href="homepage.php">
+      <a href="index.php">
         <header>XGAMES</header>
       </a>
     </div>
 
     <ul class="nav-links">
-      <li><a href="homepage.php">Home</a></li>
+      <li><a href="index.php">Home</a></li>
       <li><a href="products.php">Products</a></li>
       <li><a href="login.php">Login</a></li>
     </ul>

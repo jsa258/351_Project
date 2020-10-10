@@ -1,9 +1,10 @@
-<!DOCTYPE HTML>  
+<!DOCTYPE php>
 <html>
 <head>
-  
 <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <style>
 
 .error {color: #FF0000;}
@@ -16,20 +17,12 @@
 }
 </style>
 </head>
-<body>  
+<body>
 
   <!-- NAVIGATION STARTS -->
 
   <nav>
     <!--burger is the icon for the drop down menu-->
-    <div class="burger">
-      <div class="line1">
-      </div>
-      <div class="line2">
-      </div>
-      <div class="line3">
-      </div>
-    </div>
 
     <div class="logo">
       <a href="index.php">
@@ -40,7 +33,7 @@
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
       <li><a href="products.php">Products</a></li>
-      <?php 
+      <?php
         $file = 'user.txt';
         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
            // fill in your own code. Hint! each character is 1 byte
@@ -48,7 +41,7 @@
             fclose($handle);
         }
         if(trim(file_get_contents('user.txt')) == false){
-         
+
          echo "<li><a href=\"login.php\">Login</a></li>";
         }else{
           echo "Welcome  $content";
@@ -57,13 +50,7 @@
 
       ?>
     </ul>
-
-
-
   </nav>
-  <!--link to script needed to create the drop down effect-->
-  <script src="js/responsive.js"></script>
-
   <!-- NAVIGATION ENDS -->
 
 <?php
@@ -77,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $name = test_input($_POST["name"]);
   }
-  
+
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
@@ -89,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $number = test_input($_POST["number"]);
   }
-  
+
   if (empty($_POST["password"])) {
     $passwordErr = "Password is required";
   } else {
@@ -110,64 +97,69 @@ function test_input($data) {
   return $data;
 }
 ?>
-<div class="center">
-<h2>Register</h2><br>
+<div class="register-box">
+  <div class="register-container">
 <p><span class="error"></span></p>
-<form method="post" class="form_input center">  
-  Name <br> <input type="text" name="name" value="<?php echo $name;?>">
+<form method="post" class="form_input_center">
+  <h2>Register</h2><br>
+  <label for="inputname">Full name</label>
+  <input type="text" class="form-text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
-  <br><br>
-  E-mail <br><input type="text" name="email" value="<?php echo $email;?>">
+  <br>
+  <label for="inputemail">Email</label>
+  <input type="text" class="form-text" name="email" value="<?php echo $email;?>">
   <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Phone number <br> <input type="text" name="number" value="<?php echo $number;?>">
+  <br>
+  <label for="inputemail">Phone Number</label>
+  <input type="text" class="form-text" name="number" value="<?php echo $number;?>">
   <span class="error">* <?php echo $numberErr;?></span>
-  <br><br>
-  Password <br> <input type="text" name="password" value="<?php echo $password;?>">
+  <br>
+  <label for="inputemail">Password</label>
+  <input type="text" class="form-text" name="password" value="<?php echo $password;?>">
   <span class="error">* <?php echo $passwordErr;?></span>
-  <br><br> 
-
-  <input type="submit" name="submit" value="Submit">  
+  <br>
+  <input type="submit" class="buy-btn1" name="submit" value="Submit">
 </form>
-
 </div>
- <!--begin footer-->
- <div class="footer">
-   <div class="inner-footer">
+</div>
 
-     <div class="footer-items">
-       <h5> XGames </h5>
-       <p> Description of the website</p>
-     </div>
-     <div class="footer-items">
-       <div class="contact">
-         <h6> Contact Us </h6>
-         <span><i class="fas fa-envelope"></i> info@gmail.com</span>
-         <i class="fas fa-phone"></i>604-232-3421
-       </div>
-     </div>
 
-     <div class="footer-items">
-       <div class="social">
-         <h6> Social Media </h6>
-         <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-         <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-         <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-       </div>
-     </div>
+<!--begin footer-->
+<div class="footer">
+  <div class="inner-footer">
 
-     <div class="footer-items">
-       <h6> Quick Links </h6>
-       <ul>
-         <li><a href="index.html">Home</a></li>
-         <li><a href="products.html">Products</a></li>
-       </ul>
-     </div>
-   </div>
-   <div class="footer-bottom">
-     Copyright &copy;
-   </div>
- </div>
+    <div class="footer-items">
+      <h2> XGAMES </h2>
+      <p> Sells The Trendiest Video Games</p>
+    </div>
+    <div class="footer-items">
+      <div class="contact">
+        <h3> Contact Us </h3>
+        <span><i class="fas fa-envelope"></i>xgames@gmail.com</span>
+        <i class="fas fa-phone"></i>604-123-1244
+      </div>
+    </div>
 
+    <div class="footer-items">
+      <div class="social">
+        <h3> Social Media </h3>
+        <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-items">
+      <h3> Quick Links </h3>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Products</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Copyright &copy;
+  </div>
+</div>
 </body>
 </html>
