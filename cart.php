@@ -72,7 +72,6 @@ if(isset($_GET["action"]))
 					// print_r($values);
 			?>
 			<tr>
-				<td><?php echo $values["item_id"]; ?></td>
 				<td><?php echo $values["item_name"]; ?></td>
 				<td><?php echo $values["item_quantity"]; ?></td>
 				<td>$ <?php echo $values["item_price"]; ?></td>
