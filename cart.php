@@ -69,8 +69,10 @@ if(isset($_GET["action"]))
 				$total = 0;
 				foreach($_SESSION["shopping_cart"] as $keys => $values)
 				{
+					// print_r($values);
 			?>
 			<tr>
+				<td><?php echo $values["item_id"]; ?></td>
 				<td><?php echo $values["item_name"]; ?></td>
 				<td><?php echo $values["item_quantity"]; ?></td>
 				<td>$ <?php echo $values["item_price"]; ?></td>

@@ -166,8 +166,10 @@ require 'connection.php';
     <div class="product-img"><img src="<?php echo $rows['imageurl']; ?>" /></div>
       <div class="detail-box">
         <div class="type" name="hidden_name"><a href="#"><?php echo $rows['name']; ?></a></div>
+        <input hidden type="text" name="hidden_name" value="<?php echo $rows['name']; ?>">
       <a href="#" class="price" name="hidden_price">$<?php echo $rows['price']; ?></a>
     </div>
+    <input hidden type="text" name="hidden_price" value="<?php echo $rows['price']; ?>">
     <div class="review">
      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
      <div class="overlaying">
