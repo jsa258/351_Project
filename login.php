@@ -44,7 +44,7 @@
     <!-- FORMS START-->
 <div class="login-box">
   <div class="login-container">
-<form action="" method="post">
+<form action="process.php" method="post">
   <h2>Login</h2>
   <table width="200" border="0">
   <tr>

@@ -59,6 +59,7 @@
 $nameErr = $emailErr = $numberErr = $passwordErr = "";
 $name = $email = $number = $password = "";
 
+/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -83,10 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $password = test_input($_POST["password"]);
   }
-  echo "<meta http-equiv=\"refresh\" content=\"1; URL=index.php\" />";
 }
+*/
 
 //Saving data to textfile https://www.dummies.com/programming/php/how-to-write-a-basic-text-file-in-php-for-html5-and-css3-programming/
+/*
 $saveData = <<< HERE
 $email|$password|$name|$number
 
@@ -97,7 +99,7 @@ HERE;
 
 function test_input($data) {
   return $data;
-}
+}*/
 ?>
 <div class="register-box">
   <div class="register-container">
@@ -124,6 +126,75 @@ function test_input($data) {
 </form>
 </div>
 </div>
+
+<?php
+require_once('connection.php');
+session_start();
+if(isset($_POST['submit']))
+    {
+       if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['number']) || empty($_POST['password']))
+       {
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          if (empty($_POST["name"])) {
+            $nameErr = "Name is required";
+          } else {
+            $name = test_input($_POST["name"]);
+          }
+        
+          if (empty($_POST["email"])) {
+            $emailErr = "Email is required";
+          } else {
+            $email = test_input($_POST["email"]);
+          }
+        
+          if (empty($_POST["number"])) {
+            $numberErr = "Phone number is required";
+          } else {
+            $number = test_input($_POST["number"]);
+          }
+        
+          if (empty($_POST["password"])) {
+            $passwordErr = "Password is required";
+          } else {
+            $password = test_input($_POST["password"]);
+          }
+        }
+            
+       }
+       else
+       {
+
+        $query="select * from users where email='".$_POST['email']."'";
+      $check=mysqli_query($connection,$query);
+
+      if(mysqli_fetch_assoc($check))
+      {
+        echo 'Account existed!';
+      }else{
+
+        $name = addslashes($_POST['name']);
+        $email = addslashes($_POST['email']);
+        $phone_no = addslashes($_POST['number']);
+        $password = addslashes($_POST['password']);
+
+            $query= "INSERT INTO users (email, password, name, phone_no) VALUES (
+              '{$email}', '{$password}', '{$name}', '{$phone_no}')";
+
+             
+            $result=mysqli_query($connection,$query);
+            
+            if(mysqli_fetch_assoc($result))
+            {
+                $_SESSION['User']=$_POST['email'];
+                echo 'Register Successful!';
+            }
+          
+       }
+    }
+  }
+
+?>
 
 
 <!--begin footer-->
