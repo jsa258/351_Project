@@ -28,7 +28,7 @@
 
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
-      <li><a href="products.php">Products</a></li>
+      <li><a href="product_page.php">Products</a></li>
       <?php
         $file = 'user.txt';
         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
@@ -43,8 +43,8 @@
           echo "Welcome  $content";
           echo "<li><a href=\"logout.php\">Logout</a></li>";
         }
-
       ?>
+      <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->

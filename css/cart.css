@@ -1,0 +1,83 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/*
+styling table
+  */
+.item-table{
+  width:75%;
+  height: 70%;
+  margin: 5% 13%;
+  color:#39311d;
+}
+.item-table td,tr{
+  text-align: left;
+}
+
+h1{
+  font-size: 34px;
+  font-weight: 400;
+}
+th{
+  background-color: #f4f4f2;
+  padding: 1%;
+}
+
+h1,.return a{
+    margin: 5% 0% 0% 14%;
+}
+
+/*continue shopping button*/
+  .return{
+    margin: 2% 0%;
+  }
+  .return a{
+   font-size: 14px;
+   color:black;
+  }
+
+/*styling total amount*/
+.total{
+  padding-top: 5%;
+  font-weight: bold;
+  color: green;
+}
+.total p{
+  margin: 0% 7%;
+  font-size: 20px;
+}
+
+/*styling checkout btn*/
+.checkout-btn a{
+  float: right;
+  display: flex;
+  width:200px;
+  height:50px;
+  justify-content:space-around;
+  align-items: center;
+  background-color: white;
+  color:#252525;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 8px 0px;
+  border-radius: 15px;
+  border-width: 0.15em;
+  border-color:  black;
+  border-style:solid;
+  text-decoration: none;
+}
+.checkout-btn a:hover{
+  color:#FFFFFF;
+  background-color: black;
+  transition: all ease 0.3s;
+}
+
+/*styling alerts*/
+.alerts{
+  color: red;
+  position: relative;
+  top: 26%;
+  left: 14%;
+}

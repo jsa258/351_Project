@@ -1,0 +1,44 @@
+
+.order-confirm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5% 10%;
+}
+.order-confirm i{
+  font-size: 50;
+  color:green;
+}
+p.heading{
+  font-weight: 600;
+}
+
+p.confirm {
+  font-size: 16px;
+  padding: 0.8em;
+  font-weight: 400;
+}
+.table{
+  width: 50%;
+}
+.summary-box{
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 70%;
+  position: relative;
+  left:18%;
+}
+.delivery-detail{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items:baseline;
+}
+.table{
+  display: block;
+}
+.item-table{
+  width: 100%;
+  background-color: red;
+}

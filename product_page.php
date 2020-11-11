@@ -2,10 +2,9 @@
 
 <?php
 session_start();
-require 'connection.php';
-  $selectorder = "SELECT * FROM games limit 25";
+require 'connection.php'; //connect to database
+  $selectorder = "SELECT * FROM games limit 15";
 	$result = mysqli_query($connection, $selectorder);
-
 ?>
 
 <html>
@@ -30,7 +29,7 @@ require 'connection.php';
 
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
-      <li><a href="products.php">Products</a></li>
+      <li><a href="product_page.php">Products</a></li>
       <?php
         $file = 'user.txt';
         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
@@ -151,32 +150,35 @@ require 'connection.php';
    <label for="adult">Adults Only</label><br>
 </div>
 
+<!-- PRODUCT MENU STARTS -->
 <div class="main">
-      <?php
-      $projects = array();
+  <?php
+  // use array to display products and echo the information of each product
+    $products = array();
       while ($rows = mysqli_fetch_array($result))
       {
-          $projects[] = $rows;
+          $products[] = $rows;
       }
-      foreach ($projects as $rows)
+      foreach ($products as $rows)
       {
   ?>
   <div class="product-item">
-    <form method="post" action="cart.php?action=add&id=<?php echo $rows["id"]; ?>" enctype="multipart/form-data">
-    <div class="product-img"><img src="<?php echo $rows['imageurl']; ?>" /></div>
-      <div class="detail-box">
+    <form method="post" action="cart.php?action=add&id=<?php echo $rows["id"]; ?>">
+    <div class="product-img" name="product_image"><a href="detailpage.php"><img src="<?php echo $rows['imageurl']; ?>" /></a></div>
+    <div class="review">
+    <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>
+   </div>
+    <div class="detail-box">
         <div class="type" name="hidden_name"><a href="#"><?php echo $rows['name']; ?></a></div>
         <input hidden type="text" name="hidden_name" value="<?php echo $rows['name']; ?>">
       <a href="#" class="price" name="hidden_price">$<?php echo $rows['price']; ?></a>
     </div>
+
     <input hidden type="text" name="hidden_price" value="<?php echo $rows['price']; ?>">
-    <div class="review">
-     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-     <div class="overlaying">
-       <input type="text" name="quantity" value="1" class="form-control" />
-       	<input type="submit" name="add_to_cart" class="buy-btn1" value="Add to Cart" />
-   </div>
- </div>
+    <input hidden type="number" name="quantity" value="<?php echo $rows['quantity']; ?>">
+    <input type="number" name="quantity" value="1" class="form-control" />
+
+      <input type="submit" name="add_cart" class="buy-btn1" value="Add to Cart" />
    </form>
  </div>
  <?php } mysqli_close($connection); ?>
