@@ -150,7 +150,7 @@ $pnumber = $_SESSION['pnumber'];
        <h3> Quick Links </h3>
        <ul>
          <li><a href="index.php">Home</a></li>
-         <li><a href="products.php">Products</a></li>
+         <li><a href="product_page.php">Products</a></li>
        </ul>
      </div>
    </div>

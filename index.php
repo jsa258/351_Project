@@ -1,6 +1,10 @@
 <!DOCTYPE php>
 <?php
- ?>
+session_start();
+require 'connection.php'; //connect to database
+  $selectorder = "SELECT * FROM games limit 5";
+	$result = mysqli_query($connection, $selectorder);
+?>
 
 <html lang="en">
 
@@ -13,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
-  <title>IAT351-Project</title>
+  <title>IAT352-Project</title>
 </head>
 
 <body>
@@ -43,6 +47,7 @@
           echo "Welcome  $content";
           echo "<li><a href=\"logout.php\">Logout</a></li>";
         }
+
       ?>
       <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
     </ul>
@@ -62,100 +67,38 @@
     <h1>Featured Items</h1>
   </section>
   <!-- Products -->
- <section class="product">
-  <!-- product1 -->
-  <div class="product-item">
-    <div class="product-img">
-     <a href=""><img src="img/1-2.jpg" alt=""></a>
-    </div>
-    <div class="detail-box">
-      <div class="type">
-        <span>New Arrival</span>
-        <a href="#">Xbox Wireless Controller</a>
+  <div class="main">
+    <?php
+    // use array to display products and echo the information of each product
+      $products = array();
+        while ($rows = mysqli_fetch_array($result))
+        {
+            $products[] = $rows;
+        }
+        foreach ($products as $rows)
+        {
+    ?>
+    <div class="product-item">
+      <form method="post" action="cart.php?action=add&id=<?php echo $rows["id"]; ?>">
+      <div class="product-img" name="product_image">
+        <a href="detailpage.php?id=<?php echo $rows['id'];?>">
+        <img src="<?php echo $rows['imageurl']; ?>" /></a>
       </div>
-    <a href="#" class="price">$50</a>
-   </div>
-    <div class="review">
-     <i class="fas fa-star"></i>
-     <i class="fas fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <div class="overlaying">
-     <a href="" class="buy-btn1">Buy Now</a>
+      <div class="review">
+      <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>
      </div>
+      <div class="detail-box">
+          <div class="type" name="hidden_name"><a href="#"><?php echo $rows['name']; ?></a></div>
+          <input hidden type="text" name="hidden_name" value="<?php echo $rows['name']; ?>">
+        <a href="#" class="price" name="hidden_price">$<?php echo $rows['price']; ?></a>
+      </div>
+
+      <input hidden type="text" name="hidden_price" value="<?php echo $rows['price']; ?>">
+      <input hidden type="number" name="quantity" value="<?php echo $rows['quantity']; ?>">
+     </form>
    </div>
-  </div>
-  <!-- product2 -->
-  <div class="product-item">
-    <div class="product-img">
-     <img src="img/switch1.png" alt="">
+   <?php } mysqli_close($connection); ?>
     </div>
-    <div class="detail-box">
-      <div class="type">
-        <span>New Arrival</span>
-        <a href="#">Transistor</a>
-    </div>
-    <a href="#" class="price">$50</a>
-  </div>
-    <div class="review">
-     <i class="fas fa-star"></i>
-     <i class="fas fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <div class="overlaying">
-       <a href="#" class="buy-btn1">Buy Now</a>
-     </div>
-   </div>
-  </div>
-  <!-- product3 -->
-  <div class="product-item">
-    <div class="product-img">
-     <a href=""><img src="img/xbox2.jpg" alt=""></a>
-    </div>
-    <div class="detail-box">
-      <div class="type">
-        <span>New Arrival</span>
-        <a href="#">Cyberpunk 2077</a>
-    </div>
-    <a href="#" class="price">$50</a>
-  </div>
-    <div class="review">
-     <i class="fas fa-star"></i>
-     <i class="fas fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <div class="overlaying">
-       <a href="#" class="buy-btn1">Buy Now</a>
-     </div>
-   </div>
-  </div>
-  <!-- product4 -->
-  <div class="product-item">
-    <div class="product-img">
-     <a href="detail.html"><img src="img/xbox1.jpg" alt=""></a>
-    </div>
-    <div class="detail-box">
-      <div class="type">
-        <span>New Arrival</span>
-        <a href="#">Crash Bandicoot 4</a>
-    </div>
-    <a href="#" class="price">$50</a>
-  </div>
-    <div class="review">
-     <i class="fas fa-star"></i>
-     <i class="fas fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <i class="far fa-star"></i>
-     <div class="overlaying">
-       <a href="#" class="buy-btn1">Buy Now</a>
-     </div>
-   </div>
-  </div>
- </section>
  <!-- FEATURE ITEMS ENDS -->
 
   <!-- PRODUCT SLIDER STARTS -->
@@ -269,7 +212,7 @@
        <h3> Quick Links </h3>
        <ul>
          <li><a href="index.php">Home</a></li>
-         <li><a href="products.php">Products</a></li>
+         <li><a href="product_page.php">Products</a></li>
        </ul>
      </div>
    </div>

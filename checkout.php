@@ -186,7 +186,7 @@ require 'connection.php';
       <h3> Quick Links </h3>
       <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Products</a></li>
+        <li><a href="product_page.php">Products</a></li>
       </ul>
     </div>
   </div>
@@ -208,12 +208,17 @@ if(!isset($_POST['submit'])) exit();
    }
 }
   if($filled) {
-    //if fields are filled, check os true and insert order info into database
+    //if fields are filled, check if true and insert user and order info into database
     $fullname = $_POST['fullname'];
     $ordertime = date("Y-m-d H:i:s");
     $ordernum = rand(10000,11000);
-    $address = $_POST['address'];
-    $insert_sql = "INSERT into orders (full_name,order_time,order_num, address) VALUES ('$fullname','$ordertime','$ordernum','$address')";
+    $address = $_POST['address'].$_POST['city'].$_POST['province'].$_POST['country'].$_POST['postalcode'];
+    $itemname = $values["item_name"];
+    $itemquantity = $values["item_quantity"];
+    $totalprice = number_format($total, 2);
+
+    $insert_sql = "INSERT into orders (full_name,order_time,order_num, address,item_name,item_qty,total_price) VALUES ('$fullname','$ordertime','$ordernum','$address','$itemname','$itemquantity','$totalprice')";
+
 //if data successfully entered, direct to confirmation page
     if ($connection->query($insert_sql) === TRUE) {
       echo "New record created successfully";

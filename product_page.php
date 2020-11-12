@@ -179,9 +179,6 @@ require 'connection.php'; //connect to database
 
     <input hidden type="text" name="hidden_price" value="<?php echo $rows['price']; ?>">
     <input hidden type="number" name="quantity" value="<?php echo $rows['quantity']; ?>">
-    <input type="number" name="quantity" value="1" class="form-control" />
-
-      <input type="submit" name="add_cart" class="buy-btn1" value="Add to Cart" />
    </form>
  </div>
  <?php } mysqli_close($connection); ?>
@@ -225,7 +222,7 @@ require 'connection.php'; //connect to database
         <h3> Quick Links </h3>
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="products.php">Products</a></li>
+          <li><a href="product_page.php">Products</a></li>
         </ul>
       </div>
     </div>

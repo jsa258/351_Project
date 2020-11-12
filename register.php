@@ -33,7 +33,7 @@
 
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
-      <li><a href="products.php">Products</a></li>
+      <li><a href="product_page.php">Products</a></li>
       <?php
         $file = 'user.txt';
         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
@@ -141,26 +141,26 @@ if(isset($_POST['submit']))
           } else {
             $name = test_input($_POST["name"]);
           }
-        
+
           if (empty($_POST["email"])) {
             $emailErr = "Email is required";
           } else {
             $email = test_input($_POST["email"]);
           }
-        
+
           if (empty($_POST["number"])) {
             $numberErr = "Phone number is required";
           } else {
             $number = test_input($_POST["number"]);
           }
-        
+
           if (empty($_POST["password"])) {
             $passwordErr = "Password is required";
           } else {
             $password = test_input($_POST["password"]);
           }
         }
-            
+
        }
        else
        {
@@ -181,15 +181,15 @@ if(isset($_POST['submit']))
             $query= "INSERT INTO users (email, password, name, phone_no) VALUES (
               '{$email}', '{$password}', '{$name}', '{$phone_no}')";
 
-             
+
             $result=mysqli_query($connection,$query);
-            
+
             if(mysqli_fetch_assoc($result))
             {
                 $_SESSION['User']=$_POST['email'];
                 echo 'Register Successful!';
             }
-          
+
        }
     }
   }
@@ -226,7 +226,7 @@ if(isset($_POST['submit']))
       <h3> Quick Links </h3>
       <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="products.php">Products</a></li>
+        <li><a href="product_page.php">Products</a></li>
       </ul>
     </div>
   </div>
