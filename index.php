@@ -66,7 +66,7 @@
   <!-- product1 -->
   <div class="product-item">
     <div class="product-img">
-     <a href="detailpage.php"><img src="img/1-2.jpg" alt=""></a>
+     <a href=""><img src="img/1-2.jpg" alt=""></a>
     </div>
     <div class="detail-box">
       <div class="type">
@@ -82,7 +82,7 @@
      <i class="far fa-star"></i>
      <i class="far fa-star"></i>
      <div class="overlaying">
-     <a href="detailpage.php" class="buy-btn1">Buy Now</a>
+     <a href="" class="buy-btn1">Buy Now</a>
      </div>
    </div>
   </div>
@@ -112,7 +112,7 @@
   <!-- product3 -->
   <div class="product-item">
     <div class="product-img">
-     <a href="detailpage.php"><img src="img/xbox2.jpg" alt=""></a>
+     <a href=""><img src="img/xbox2.jpg" alt=""></a>
     </div>
     <div class="detail-box">
       <div class="type">

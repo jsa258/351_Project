@@ -164,7 +164,10 @@ require 'connection.php'; //connect to database
   ?>
   <div class="product-item">
     <form method="post" action="cart.php?action=add&id=<?php echo $rows["id"]; ?>">
-    <div class="product-img" name="product_image"><a href="detailpage.php"><img src="<?php echo $rows['imageurl']; ?>" /></a></div>
+    <div class="product-img" name="product_image">
+      <a href="detailpage.php?id=<?php echo $rows['id'];?>">
+      <img src="<?php echo $rows['imageurl']; ?>" /></a>
+    </div>
     <div class="review">
     <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>
    </div>
