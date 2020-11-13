@@ -30,11 +30,11 @@ require 'connection.php';
         {
             echo ' Welcome ' . $_SESSION['Name'];
             echo '<a href="logout.php">Logout</a>';
+            echo '<li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>';
         }else {
           echo "<li><a href=\"login.php\">Login</a></li>";
         }
       ?>
-      <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->
@@ -90,24 +90,24 @@ require 'connection.php';
 
       <div class="form-group">
         <div class="row-1">
-          <label for="cname">Name on Card</label>
+          <label for="cname">Name on Card <span class="error">*</span></label>
           <input type="text" class="form-control" name="cname" placeholder="John Smith">
         </div>
         <div class="row-1">
-          <label for="Cardnumber">Card Number</label>
+          <label for="Cardnumber">Card Number <span class="error">*</span></label>
           <input type="text" class="form-control" name="cnumber" placeholder="1234-2345-3456-4567">
         </div>
         <div class="card-info">
           <div class="row-1">
-            <label for="expmonth">Exp Month</label>
+            <label for="expmonth">Exp Month <span class="error">*</span></label>
             <input type="text" id="expmonth" name="expmonth" placeholder="October">
           </div>
           <div class="row-1">
-            <label for="expyear">Exp Year</label>
+            <label for="expyear">Exp Year <span class="error">*</span></label>
             <input type="text" id="expyear" name="expyear" placeholder="2030">
           </div>
           <div class="row-1">
-            <label for="cvv">CVV</label>
+            <label for="cvv">CVV <span class="error">*</span></label>
             <input type="text" id="cvv" name="cvv" placeholder="242">
           </div>
          </div>
@@ -195,7 +195,7 @@ require 'connection.php';
 <?php
 if(!isset($_POST['submit'])) exit();
 //when user submit form, check if required fields are filled
-  $require = array('email','address','city','country','province','postalcode');
+  $require = array('email','address','city','country','province','postalcode','cname','cnumber','expmonth','expyear','cvv');
   $filled= TRUE;
   foreach($require as $field) {
    if(!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -211,6 +211,8 @@ if(!isset($_POST['submit'])) exit();
     $itemname = $values["item_name"];
     $itemquantity = $values["item_quantity"];
     $totalprice = number_format($total, 2);
+
+
 
     $insert_sql = "INSERT into orders (email,order_time,order_num, address) VALUES ('$email','$ordertime','$ordernum','$address')";
 
