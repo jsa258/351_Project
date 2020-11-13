@@ -35,9 +35,9 @@ require 'connection.php'; //connect to database
       <li><a href="product_page.php">Products</a></li>
       <?php
 
-        if(isset($_SESSION['User']))
+        if(isset($_SESSION['Name']))
     {
-        echo ' Welcome ' . $_SESSION['User'];
+        echo ' Welcome ' . $_SESSION['Name'];
         echo '<a href="logout.php">Logout</a>';
     }else {
       echo "<li><a href=\"login.php\">Login</a></li>";

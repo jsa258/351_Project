@@ -176,17 +176,19 @@ if(isset($_POST['submit']))
         $phone_no = addslashes($_POST['number']);
         $password = addslashes($_POST['password']);
 
-            $query= "INSERT INTO users (email, password, name, phone_no) VALUES (
+            $query2= "INSERT INTO users (email, password, name, phone_no) VALUES (
               '{$email}', '{$password}', '{$name}', '{$phone_no}')";
 
 
-            $result=mysqli_query($connection,$query);
+            $result=mysqli_query($connection,$query2);
 
             if(mysqli_fetch_assoc($result))
             {
               $_SESSION['User']=$_POST['email'];
               $_SESSION['Name']=$_POST['name'];
               echo 'Register Successful!';
+            }else{
+              
             }
 
        }
