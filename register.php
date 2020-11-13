@@ -137,25 +137,25 @@ if(isset($_POST['submit']))
           if (empty($_POST["name"])) {
             $nameErr = "Name is required";
           } else {
-            $name = test_input($_POST["name"]);
+            $name = ($_POST["name"]);
           }
 
           if (empty($_POST["email"])) {
             $emailErr = "Email is required";
           } else {
-            $email = test_input($_POST["email"]);
+            $email = ($_POST["email"]);
           }
 
           if (empty($_POST["number"])) {
             $numberErr = "Phone number is required";
           } else {
-            $number = test_input($_POST["number"]);
+            $number = ($_POST["number"]);
           }
 
           if (empty($_POST["password"])) {
             $passwordErr = "Password is required";
           } else {
-            $password = test_input($_POST["password"]);
+            $password = ($_POST["password"]);
           }
         }
 
@@ -163,33 +163,51 @@ if(isset($_POST['submit']))
        else
        {
 
+        //Password Validation code from https://www.codexworld.com/how-to/validate-password-strength-in-php/?fbclid=IwAR3exHFhciFRFGQZRmKB80DrlNQNtc2leVnlnDqs0zSw5jL3hqn7Zt21n3M
+        // Given password
+        $password = ($_POST["password"]);
+        // Validate password strength
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+          echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+        }else{
+        echo 'Strong password.';
+
         $query="select * from users where email='".$_POST['email']."'";
-      $check=mysqli_query($connection,$query);
+        $check=mysqli_query($connection,$query);
+  
+        if(mysqli_fetch_assoc($check))
+        {
+          echo 'Account existed!';
+        }else{
+  
+          $name = addslashes($_POST['name']);
+          $email = addslashes($_POST['email']);
+          $phone_no = addslashes($_POST['number']);
+          $password = addslashes($_POST['password']);
 
-      if(mysqli_fetch_assoc($check))
-      {
-        echo 'Account existed!';
-      }else{
-
-        $name = addslashes($_POST['name']);
-        $email = addslashes($_POST['email']);
-        $phone_no = addslashes($_POST['number']);
-        $password = addslashes($_POST['password']);
-
-            $query2= "INSERT INTO users (email, password, name, phone_no) VALUES (
-              '{$email}', '{$password}', '{$name}', '{$phone_no}')";
+        $query2= "INSERT INTO users (email, password, name, phone_no) VALUES (
+          '{$email}', '{$password}', '{$name}', '{$phone_no}')";
 
 
-            $result=mysqli_query($connection,$query2);
+        $result=mysqli_query($connection,$query2);
 
-            if(mysqli_fetch_assoc($result))
-            {
-              $_SESSION['User']=$_POST['email'];
-              $_SESSION['Name']=$_POST['name'];
-              echo 'Register Successful!';
-            }else{
-              
-            }
+
+
+        // if(mysqli_fetch_assoc($result))
+        if($result)
+        {
+          $_SESSION['User']=$_POST['email'];
+          $_SESSION['Name']=$_POST['name'];
+          echo 'Register Successful!';
+          echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\" />";
+        }
+      }
+
+            
 
        }
     }

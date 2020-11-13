@@ -6,6 +6,8 @@ session_start();
        if(empty($_POST['email']) || empty($_POST['pass-word']))
        {
             header("location:login.php?Empty= Please enter a email address and password");
+            echo 'Please enter a email address and password!';
+
             
        }
        else
@@ -42,6 +44,8 @@ session_start();
             else
             {
                 header("location:login.php?Invalid= Please Enter Correct User Name and Password ");
+                echo 'Please Enter Correct User Name and Password!';
+
             }
        }
     }
