@@ -43,7 +43,6 @@ nav {
   font-size: 0.875em;
   text-decoration: none;
   list-style: none;
-
 }
 
 .nav-links a {
@@ -52,6 +51,7 @@ nav {
   text-decoration: none;
   list-style: none;
   padding-bottom:3%;
+
 }
 .nav-links a::after{
   content: '';

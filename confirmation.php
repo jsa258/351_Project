@@ -1,9 +1,6 @@
 <?php
 session_start();
 require 'connection.php';
-
-
-
 $fullname = $_SESSION['fullname'];
 $lastname = $_SESSION['email'];
 $address = $_SESSION['address'];
@@ -37,20 +34,13 @@ $pnumber = $_SESSION['pnumber'];
        <li><a href="index.php">Home</a></li>
        <li><a href="product_page.php">Products</a></li>
        <?php
-         $file = 'user.txt';
-         if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
-            // fill in your own code. Hint! each character is 1 byte
-             $content = fread($handle,12);
-             fclose($handle);
+         if(isset($_SESSION['Name']))
+         {
+             echo ' Welcome ' . $_SESSION['Name'];
+             echo '<a href="logout.php">Logout</a>';
+         }else {
+           echo "<li><a href=\"login.php\">Login</a></li>";
          }
-         if(trim(file_get_contents('user.txt')) == false){
-
-          echo "<li><a href=\"login.php\">Login</a></li>";
-         }else{
-           echo "Welcome  $content";
-           echo "<li><a href=\"logout.php\">Logout</a></li>";
-         }
-
        ?>
       <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
      </ul>

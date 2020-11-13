@@ -20,22 +20,8 @@
 
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
-      <li><a href="products.php">Products</a></li>
-      <?php
-        $file = 'user.txt';
-        if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
-           // fill in your own code. Hint! each character is 1 byte
-            $content = fread($handle,12);
-            fclose($handle);
-        }
-        if(trim(file_get_contents('user.txt')) == false){
-
-         echo "<li><a href=\"login.php\">Login</a></li>";
-        }else{
-          echo "Welcome  $content";
-          echo "<li><a href=\"logout.php\">Logout</a></li>";
-        }
-      ?>
+      <li><a href="product_page.php">Products</a></li>
+      <li><a href="login.php">Login</a></li>
     </ul>
   </nav>
 

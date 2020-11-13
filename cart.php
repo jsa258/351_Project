@@ -1,7 +1,17 @@
-	<?php
+<?php
 	session_start();
 	require 'connection.php'; //connect to database
-
+?>
+<?php
+	if(isset($_POST["add_cart"]))
+	{
+		//direct to login page if user want to checkout and has not logged into their account
+		if(!isset($_SESSION['Name']) || !isset($_SESSION['User'])){
+    header("Location:login.php");
+}
+	}
+ ?>
+<?php
 	//when 'add to cart' button is submitted
 	if(isset($_POST["add_cart"]))
 	{
@@ -38,7 +48,7 @@
 			$_SESSION["my_cart"][0] = $item_array;
 		}
 
-	}
+}
 	//when 'remove' is clicked, unset the session
 	if(isset($_GET["action"]))
 	{
@@ -75,20 +85,13 @@
 				<li><a href="index.php">Home</a></li>
 				<li><a href="product_page.php">Products</a></li>
 				<?php
-					$file = 'user.txt';
-					if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
-						 // fill in your own code. Hint! each character is 1 byte
-							$content = fread($handle,12);
-							fclose($handle);
+					if(isset($_SESSION['Name']))
+					{
+							echo ' Welcome ' . $_SESSION['Name'];
+							echo '<a href="logout.php">Logout</a>';
+					}else {
+						echo "<li><a href=\"login.php\">Login</a></li>";
 					}
-					if(trim(file_get_contents('user.txt')) == false){
-
-					 echo "<li><a href=\"login.php\">Login</a></li>";
-					}else{
-						echo "Welcome  $content";
-						echo "<li><a href=\"logout.php\">Logout</a></li>";
-					}
-
 				?>
 			 <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
 			</ul>
@@ -131,7 +134,7 @@
 					<td class="total" colspan="5" tr style="text-align:right">
 						 <!-- Display price with two decimal places -->
 						<p>Total: &nbsp; &nbsp; $ <?php echo number_format($total, 2); ?></p><br><br>
-						<div class="checkout-btn"><a href="checkout.php" >Proceed to Check Out</a></div>
+						<div class="checkout-btn" name="checkout"><a href="checkout.php" >Proceed to Check Out</a></div>
 						<!-- allow users to checkout or go back to product listing to add items-->
 				</td>
 				</tr>

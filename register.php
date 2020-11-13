@@ -34,22 +34,7 @@
     <ul class="nav-links">
       <li><a href="index.php">Home</a></li>
       <li><a href="product_page.php">Products</a></li>
-      <?php
-        $file = 'user.txt';
-        if($handle = fopen($file, 'r')) { // read this Hello World! from filetest.txt
-           // fill in your own code. Hint! each character is 1 byte
-            $content = fread($handle,12);
-            fclose($handle);
-        }
-        if(trim(file_get_contents('user.txt')) == false){
-
-         echo "<li><a href=\"login.php\">Login</a></li>";
-        }else{
-          echo "Welcome  $content";
-          echo "<li><a href=\"logout.php\">Logout</a></li>";
-        }
-
-      ?>
+      <li><a href="login.php">Login</a></li>
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->
@@ -103,7 +88,11 @@ function test_input($data) {
   <div class="register-container">
 <p><span class="error"></span></p>
 <form method="post" class="form_input_center">
-  <h2>Register</h2><br>
+  <div class="register">
+  <h2>Register</h2>
+  <p> Already have an account? <a href="login.php">Login here</a></p>
+  </div>
+
   <label for="inputname">Full name</label>
   <input type="text" class="form-text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
@@ -172,18 +161,18 @@ if(isset($_POST['submit']))
         $number    = preg_match('@[0-9]@', $password);
         $specialChars = preg_match('@[^\w]@', $password);
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-          echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+          echo '<div class="password-msg">Password should be at least 8 characters in length and <br> should include at least one upper case letter, one number, and one special character.</div>';
         }else{
-        echo 'Strong password.';
+        echo '<div class="alert-msg">Strong password.</div>';
 
         $query="select * from users where email='".$_POST['email']."'";
         $check=mysqli_query($connection,$query);
-  
+
         if(mysqli_fetch_assoc($check))
         {
-          echo 'Account existed!';
+          echo '<div class="account-msg">Account already exists!</div>';
         }else{
-  
+
           $name = addslashes($_POST['name']);
           $email = addslashes($_POST['email']);
           $phone_no = addslashes($_POST['number']);
@@ -202,12 +191,12 @@ if(isset($_POST['submit']))
         {
           $_SESSION['User']=$_POST['email'];
           $_SESSION['Name']=$_POST['name'];
-          echo 'Register Successful!';
+          echo '<div class="account-msg">Register Successful!</div>';
           echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\" />";
         }
       }
 
-            
+
 
        }
     }

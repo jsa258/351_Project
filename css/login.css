@@ -55,3 +55,35 @@ label {
   width: 80px;
   height:30px;
 }
+
+.password-msg{
+  color:red;
+  font-size: 12px;
+  position: absolute;
+  top:32%;
+  left:35%;
+}
+.alert-msg{
+  color:red;
+  font-size: 13px;
+  position: absolute;
+  top:33%;
+  left:35%;
+}
+.account-msg{
+  color:red;
+  font-size: 14px;
+  position: absolute;
+  top:36%;
+  left:35%;
+}
+.register{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8%;
+}
+.register p{
+  margin-top: 8%;
+  margin-left: 3%;
+  font-size: 12px;
+}
