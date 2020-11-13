@@ -200,7 +200,7 @@ require 'connection.php';
 <?php
 if(!isset($_POST['submit'])) exit();
 //when user submit form, check if required fields are filled
-  $require = array('fullname','address','city','country','province','postalcode');
+  $require = array('email','address','city','country','province','postalcode');
   $filled= TRUE;
   foreach($require as $field) {
    if(!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -209,20 +209,19 @@ if(!isset($_POST['submit'])) exit();
 }
   if($filled) {
     //if fields are filled, check if true and insert user and order info into database
-    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
     $ordertime = date("Y-m-d H:i:s");
     $ordernum = rand(10000,11000);
-    $address = $_POST['address'].$_POST['city'].$_POST['province'].$_POST['country'].$_POST['postalcode'];
+    $address = $_POST['address'] . " " . $_POST['city'] . " " . $_POST['province'] . " " . $_POST['country'] . " " . $_POST['postalcode'];
     $itemname = $values["item_name"];
     $itemquantity = $values["item_quantity"];
     $totalprice = number_format($total, 2);
 
-    $insert_sql = "INSERT into orders (full_name,order_time,order_num, address,item_name,item_qty,total_price) VALUES ('$fullname','$ordertime','$ordernum','$address','$itemname','$itemquantity','$totalprice')";
+    $insert_sql = "INSERT into orders (email,order_time,order_num, address) VALUES ('$email','$ordertime','$ordernum','$address')";
 
 //if data successfully entered, direct to confirmation page
     if ($connection->query($insert_sql) === TRUE) {
       echo "New record created successfully";
-      header("Location:confirmation.php");
       $_SESSION['fullname'] = $_POST['fullname'];
       $_SESSION['email'] = $_POST['email'];
       $_SESSION['address'] = $_POST['address'];
@@ -231,18 +230,44 @@ if(!isset($_POST['submit'])) exit();
       $_SESSION['province'] = $_POST['province'];
       $_SESSION['postalcode'] = $_POST['postalcode'];
       $_SESSION['pnumber'] = $_POST['pnumber'];
-
+      $success = TRUE;
     } else {
       //if data not successfully entered, display error
       echo "Error: " . $insert_sql . "<br>" . $connection->error;
+      echo "Error: " . $orderDetails_sql . "<br>" . $connection->error;
+    }
+
+    ///////
+    // $array = $_SESSION["my_cart"];
+    foreach($_SESSION["my_cart"] as $product){
+      $orderDetails_sql = "INSERT INTO orderdetails (order_num, id, quantityOrdered)";
+      $orderDetails_sql .= "VALUES ('$ordernum','{$product['item_id']}','{$product['item_quantity']}');";
+      if ($connection->multi_query($orderDetails_sql) === TRUE) {
+        echo "New records created successfully";
+        $success = TRUE;
+      } else {
+        echo "Error: " . $orderDetails_sql . "<br>" . $connection->error;
+        $success = FALSE;
+      }
+    }
+    //////
+
+    if ($success == TRUE){
+      header("Location:confirmation.php");
     }
 //close connection
     $connection->close();
-
     exit();
 }
   else {
     //display alert if user did not fill out all required fields
     echo '<div class="alert">please fill out required information</div>';
+    // print_r($_SESSION["my_cart"]);
+    // foreach($_SESSION["my_cart"] as $product){
+    //   $orderDetails_sql = "INSERT INTO orderdetails (order_num, id, quantityOrdered)";
+    //   $orderDetails_sql .= "VALUES ('{$product['item_id']}','{$product['item_id']}','{$product['item_quantity']}');";
+    //   echo $orderDetails_sql;
+    //   echo '<br>';
+    // }
     die();
 }
