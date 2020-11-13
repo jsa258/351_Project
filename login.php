@@ -42,6 +42,8 @@
   <!-- NAVIGATION ENDS -->
 
     <!-- FORMS START-->
+    <?php  session_start(); ?>
+
 <div class="login-box">
   <div class="login-container">
 <form action="process.php" method="post">
@@ -66,8 +68,6 @@
 </form>
 </div>
 </div>
-
-<?php  session_start(); ?>
 
 <?php
 

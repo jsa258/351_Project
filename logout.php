@@ -10,8 +10,8 @@ if($handle = fopen($file, 'w')) {
 } 
 
 session_start();
-unset($_SESSION["id"]);
-unset($_SESSION["name"]);
+unset($_SESSION["User"]);
+unset($_SESSION["Name"]);
 header("Location:index.php");
 
 

@@ -16,6 +16,14 @@ session_start();
             if(mysqli_fetch_assoc($result))
             {
                 $_SESSION['User']=$_POST['email'];
+
+                // $nameQuery ="select name from users where email='".$_POST['email']."'";
+
+                // if($findName = mysqli_fetch_assoc($nameQuery)){
+                //     $_SESSION['Name']=$findName['name'];
+                //     echo $findName['name'];
+                // }
+
                 header("location:index.php");
             }
             else

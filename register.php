@@ -59,33 +59,31 @@
 $nameErr = $emailErr = $numberErr = $passwordErr = "";
 $name = $email = $number = $password = "";
 
-/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
-    $name = test_input($_POST["name"]);
+    $name = $_POST["name"];
   }
 
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
-    $email = test_input($_POST["email"]);
+    $email = $_POST["email"];
   }
 
   if (empty($_POST["number"])) {
     $numberErr = "Phone number is required";
   } else {
-    $number = test_input($_POST["number"]);
+    $number = $_POST["number"];
   }
 
   if (empty($_POST["password"])) {
     $passwordErr = "Password is required";
   } else {
-    $password = test_input($_POST["password"]);
+    $password = $_POST["password"];
   }
 }
-*/
 
 //Saving data to textfile https://www.dummies.com/programming/php/how-to-write-a-basic-text-file-in-php-for-html5-and-css3-programming/
 /*
@@ -186,8 +184,9 @@ if(isset($_POST['submit']))
 
             if(mysqli_fetch_assoc($result))
             {
-                $_SESSION['User']=$_POST['email'];
-                echo 'Register Successful!';
+              $_SESSION['User']=$_POST['email'];
+              $_SESSION['Name']=$_POST['name'];
+              echo 'Register Successful!';
             }
 
        }
