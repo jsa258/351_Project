@@ -27,74 +27,34 @@
 
   <!-- NAVIGATION ENDS -->
 
-    <!-- FORMS START-->
+    <!-- LOGIN FORMS START-->
     <?php  session_start(); ?>
-
-<div class="login-box">
-  <div class="login-container">
-<form action="process.php" method="post">
-  <h2>Login</h2>
-  <table width="200" border="0">
-  <tr>
+    <div class="login-box">
+    <div class="login-container">
+    <!--redirect to process page when submit form -->
+    <form action="process.php" method="post">
+    <h2>Login</h2>
+    <table width="200" border="0">
+    <tr>
     <td> <label for="inputemail">Email</label></td>
     <td> <input type="text" name="email" > </td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td><label for="inputpassword">Password</label></td>
     <td><input type="password" name="pass-word"></td>
-  </tr>
-  <tr>
+    </tr>
+    <tr>
     <td> <input type="submit" name="login" value="LOGIN" class="buy-btn1"></td>
     <td></td>
-  </tr>
-</table>
-<div class="login">
-<p> Don't have an account? <a href="register.php">Register here</a></p>
-</div>
-</form>
-</div>
-</div>
-
-<?php
-
-if(isset($_POST['login']))   // it checks whether the user clicked login button or not
-{
-  $email = $_POST['email'];
-  $password = $_POST['pass-word'];
-  $userlist = file ('data.txt');
-
-  $name = "";
-  $number = "";
-
-  $success = false;
-  foreach ($userlist as $user) {
-      $user_details = explode('|', $user);
-      if ($user_details[0] == $email && $user_details[1] == $password) {
-          $success = true;
-          $name = $user_details[2];
-          $number = $user_details[3];
-          break;
-      }
-  }
-
-  if ($success) {
-    $saveData = <<< HERE
-    $name
-
-    HERE;
-     $fp = fopen("user.txt", "a");
-     fwrite($fp, $saveData);
-     fclose($fp);
-     echo "<meta http-equiv=\"refresh\" content=\"1; URL=index.php\" />";
-
-
-  } else {
-      echo "<div class=\"center\"> You have entered the wrong username or password. Please try again. </div>";
-  }
-
-}
-?>
-  <!-- FORMS ENDS-->
+    </tr>
+    </table>
+    <div class="login">
+    <p> Don't have an account? <a href="register.php">Register here</a></p>
+    </div>
+    </form>
+    </div>
+    </div>
+  <!-- LOGIN FORMS ENDS-->
 
 <!--begin footer-->
 <div class="footer">

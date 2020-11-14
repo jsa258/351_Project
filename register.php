@@ -45,6 +45,7 @@ $nameErr = $emailErr = $numberErr = $passwordErr = "";
 $name = $email = $number = $password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //check each field. If empty, echo error message on form
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -54,7 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
   } else {
-    $email = $_POST["email"];
+    if (!empty($_POST["email"])) {
+      $email = ($_POST["email"]);
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+      }
+    }
   }
 
   if (empty($_POST["number"])) {
@@ -66,24 +72,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["password"])) {
     $passwordErr = "Password is required";
   } else {
-    $password = $_POST["password"];
+
+    if (!empty($_POST["password"])) {
+    //Password Validation code from https://www.codexworld.com/how-to/validate-password-strength-in-php/?fbclid=IwAR3exHFhciFRFGQZRmKB80DrlNQNtc2leVnlnDqs0zSw5jL3hqn7Zt21n3M
+        // Given password
+        $password = ($_POST["password"]);
+        // Validate password strength
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $passNumber    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+        if(!$uppercase || !$lowercase || !$passNumber || !$specialChars || strlen($password) < 8) {
+          $passwordErr = "Password should be at least 8 characters in length and <br> should include at least one upper case letter, one number, and one special character.";
+        }else{
+          $passwordErr = "Strong password";
+        }
+      }
+      
   }
 }
-
-//Saving data to textfile https://www.dummies.com/programming/php/how-to-write-a-basic-text-file-in-php-for-html5-and-css3-programming/
-/*
-$saveData = <<< HERE
-$email|$password|$name|$number
-
-HERE;
- $fp = fopen("data.txt", "a");
- fwrite($fp, $saveData);
- fclose($fp);
-
-function test_input($data) {
-  return $data;
-}*/
 ?>
+    <!-- REGISTER FORM START-->
 <div class="register-box">
   <div class="register-container">
 <p><span class="error"></span></p>
@@ -113,44 +122,20 @@ function test_input($data) {
 </form>
 </div>
 </div>
+    <!-- REGISTER FORM END-->
+
 
 <?php
+//connect to database
 require_once('connection.php');
 session_start();
 if(isset($_POST['submit']))
     {
-       if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['number']) || empty($_POST['password']))
-       {
+      //checks if fields are not empty
+       if(!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['number']) || !empty($_POST['password'])){
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          if (empty($_POST["name"])) {
-            $nameErr = "Name is required";
-          } else {
-            $name = ($_POST["name"]);
-          }
 
-          if (empty($_POST["email"])) {
-            $emailErr = "Email is required";
-          } else {
-            $email = ($_POST["email"]);
-          }
-
-          if (empty($_POST["number"])) {
-            $numberErr = "Phone number is required";
-          } else {
-            $number = ($_POST["number"]);
-          }
-
-          if (empty($_POST["password"])) {
-            $passwordErr = "Password is required";
-          } else {
-            $password = ($_POST["password"]);
-          }
-        }
-
-       }
-       else
-       {
+         
 
         //Password Validation code from https://www.codexworld.com/how-to/validate-password-strength-in-php/?fbclid=IwAR3exHFhciFRFGQZRmKB80DrlNQNtc2leVnlnDqs0zSw5jL3hqn7Zt21n3M
         // Given password
@@ -158,13 +143,18 @@ if(isset($_POST['submit']))
         // Validate password strength
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
-        $number    = preg_match('@[0-9]@', $password);
+        $passNumber    = preg_match('@[0-9]@', $password);
         $specialChars = preg_match('@[^\w]@', $password);
-        if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-          echo '<div class="password-msg">Password should be at least 8 characters in length and <br> should include at least one upper case letter, one number, and one special character.</div>';
-        }else{
-        echo '<div class="alert-msg">Strong password.</div>';
+        if($uppercase || $lowercase || $passNumber || $specialChars || strlen($password) < 8) {
 
+          //validate email before registering user in db
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          //Prevent same email and password for security issue
+          if($email==$password){
+            echo '<div class="password-msg">Password cannot be the same as email.</div>';
+          }else{
+        
+            //run query in db to check if email existed
         $query="select * from users where email='".$_POST['email']."'";
         $check=mysqli_query($connection,$query);
 
@@ -177,29 +167,31 @@ if(isset($_POST['submit']))
           $email = addslashes($_POST['email']);
           $phone_no = addslashes($_POST['number']);
           $password = addslashes($_POST['password']);
+          
+          //add hash password to db
+          $hash = password_hash($password, PASSWORD_DEFAULT);
 
         $query2= "INSERT INTO users (email, password, name, phone_no) VALUES (
-          '{$email}', '{$password}', '{$name}', '{$phone_no}')";
+          '{$email}', '{$hash}', '{$name}', '{$phone_no}')";
 
 
         $result=mysqli_query($connection,$query2);
 
 
 
-        // if(mysqli_fetch_assoc($result))
         if($result)
         {
+          //store email and name to session and echo success when added user to db
           $_SESSION['User']=$_POST['email'];
           $_SESSION['Name']=$_POST['name'];
-          echo '<div class="account-msg">Register Successful!</div>';
+          echo '<div class="password-msg">Register Successful!</div>';
           echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\" />";
         }
       }
-
-
-
-       }
     }
+    }
+    }
+       }
   }
 
 ?>
