@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     if (!empty($_POST["email"])) {
       $email = ($_POST["email"]);
+      ini_set("pcre.jit", "0");
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Invalid email format";
       }
@@ -88,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $passwordErr = "Strong password";
         }
       }
-      
+
   }
 }
 ?>
@@ -135,7 +136,7 @@ if(isset($_POST['submit']))
        if(!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['number']) || !empty($_POST['password'])){
 
 
-         
+
 
         //Password Validation code from https://www.codexworld.com/how-to/validate-password-strength-in-php/?fbclid=IwAR3exHFhciFRFGQZRmKB80DrlNQNtc2leVnlnDqs0zSw5jL3hqn7Zt21n3M
         // Given password
@@ -156,7 +157,7 @@ if(isset($_POST['submit']))
           if($email==$password){
             echo '<div class="password-msg">Password cannot be the same as email.</div>';
           }else{
-        
+
          //run query in db to check if email existed
         $query="select * from users where email='".$_POST['email']."'";
         $check=mysqli_query($connection,$query);
