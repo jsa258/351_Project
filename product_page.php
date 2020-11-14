@@ -40,6 +40,7 @@
           echo "<li><a href=\"login.php\">Login</a></li>";
         }
       ?>
+      <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->

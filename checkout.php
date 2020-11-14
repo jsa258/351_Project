@@ -30,11 +30,11 @@ require 'connection.php';
         {
             echo ' Welcome ' . $_SESSION['Name'];
             echo '<a href="logout.php">Logout</a>';
-            echo '<li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>';
         }else {
           echo "<li><a href=\"login.php\">Login</a></li>";
         }
       ?>
+      <li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->
