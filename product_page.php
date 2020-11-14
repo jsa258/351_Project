@@ -35,7 +35,7 @@
         {
             echo ' Welcome ' . $_SESSION['Name'];
             echo '<a href="logout.php">Logout</a>';
-            echo '<li><a href="cart.php"><i class="fas fa-shopping-cart"></i></a></li>';
+            echo '<li><a href="cart.php"></li>';
         }else {
           echo "<li><a href=\"login.php\">Login</a></li>";
         }
