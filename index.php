@@ -74,7 +74,6 @@ require 'connection.php'; //connect to database
         {
     ?>
     <div class="product-item">
-      <form method="post" action="cart.php?action=add&id=<?php echo $rows["id"]; ?>">
       <div class="product-img" name="product_image">
         <a href="detailpage.php?id=<?php echo $rows['id'];?>">
         <img src="<?php echo $rows['imageurl']; ?>" /></a>
@@ -84,14 +83,10 @@ require 'connection.php'; //connect to database
      </div>
       <div class="detail-box">
           <div class="type" name="hidden_name"><a href="#"><?php echo $rows['name']; ?></a></div>
-          <input hidden type="text" name="hidden_name" value="<?php echo $rows['name']; ?>">
         <a href="#" class="price" name="hidden_price">$<?php echo $rows['price']; ?></a>
       </div>
-
-      <input hidden type="text" name="hidden_price" value="<?php echo $rows['price']; ?>">
-      <input hidden type="number" name="quantity" value="<?php echo $rows['quantity']; ?>">
-     </form>
    </div>
+
    <?php } mysqli_close($connection); ?>
     </div>
  <!-- FEATURE ITEMS ENDS -->
