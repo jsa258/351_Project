@@ -2,15 +2,7 @@
 	session_start();
 	require 'connection.php'; //connect to database
 ?>
-<?php
-	if(isset($_POST["add_cart"]))
-	{
-		//direct to login page if user want to checkout and has not logged into their account
-		if(!isset($_SESSION['Name']) || !isset($_SESSION['User'])){
-    header("Location:login.php");
-}
-	}
- ?>
+
 <?php
 	//when 'add to cart' button is submitted
 	if(isset($_POST["add_cart"]))
@@ -22,6 +14,7 @@
 			//check if item is already in cart, if not get name,qty,and price of the product
 			if(!in_array($_GET["id"], $product_array_id))
 			{
+				//count how many items in the cart
 				$count = count($_SESSION["my_cart"]);
 				$item_array = array(
 					'item_id'			=>	$_GET["id"],
@@ -29,7 +22,7 @@
 					'item_price'		=>	$_POST["hidden_price"],
 					'item_quantity'		=>	$_POST["quantity"]
 				);
-
+			  // store item array into the next index of the cart
 				$_SESSION["my_cart"][$count] = $item_array;
 			}
 			else
@@ -39,12 +32,14 @@
 		}
 		else
 		{
+			//if session my cart is not set, it will create an array
 			$item_array = array(
 				'item_id'			=>	$_GET["id"],
 				'item_name'	=>	$_POST["hidden_name"],
 				'item_price'		=>	$_POST["hidden_price"],
 				'item_quantity'		=>	$_POST["quantity"]
 			);
+			//store in the first index of the array
 			$_SESSION["my_cart"][0] = $item_array;
 		}
 
