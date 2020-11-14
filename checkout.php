@@ -193,6 +193,7 @@ require 'connection.php';
 </html>
 
 <?php
+//reference from https://stackoverflow.com/questions/3190464/php-check-if-any-posted-vars-are-empty-form-all-fields-required
 if(!isset($_POST['submit'])) exit();
 //when user submit form, check if required fields are filled
   $require = array('email','address','city','country','province','postalcode','cname','cnumber','expmonth','expyear','cvv');
@@ -202,8 +203,9 @@ if(!isset($_POST['submit'])) exit();
       $filled = FALSE;
    }
 }
+    //if fields are filled, check if true and add user and order info into database
   if($filled) {
-    //if fields are filled, check if true and insert user and order info into database
+   //store form information into variables
     $email = $_POST['email'];
     $ordertime = date("Y-m-d H:i:s");
     $ordernum = rand(10000,11000);
@@ -248,15 +250,15 @@ if(!isset($_POST['submit'])) exit();
       }
     }
     //////
-
+    // if data is stored in database successfully, redirect user to confirmation page
     if ($success == TRUE){
       header("Location:confirmation.php");
     }
-//close connection
-    $connection->close();
-    exit();
-}
-  else {
+    //close connection
+        $connection->close();
+        exit();
+   }
+    else {
     //display alert if user did not fill out all required fields
     echo '<div class="alert">please fill out required information</div>';
     // print_r($_SESSION["my_cart"]);

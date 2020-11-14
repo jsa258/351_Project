@@ -4,12 +4,12 @@
 ?>
 
 <?php
-	//when 'add to cart' button is submitted
+   //reference from https://phppot.com/php/simple-php-shopping-cart/ and https://stackoverflow.com/questions/19721384/adding-item-to-shopping-cart-using-php-and-html
+	//when 'add to cart' button is submitted, store item into cart
 	if(isset($_POST["add_cart"]))
 	{
 		if(isset($_SESSION["my_cart"]))
 		{
-			//returns an array which fetch the values of the product chosen, identified by a product id.
 			$product_array_id = array_column($_SESSION["my_cart"], "item_id");
 			//check if item is already in cart, if not get name,qty,and price of the product
 			if(!in_array($_GET["id"], $product_array_id))
@@ -27,6 +27,7 @@
 			}
 			else
 			{
+				//if item is already in the cart
 				echo '<div class="alerts">Item already added to your cart</div>';
 			}
 		}
@@ -94,6 +95,7 @@
 		<!-- NAVIGATION ENDS -->
 
 		<h1>My Cart</h1>
+		 <!-- allow users to return back to product list-->
 		<div class="return"><a href="product_page.php">Continue Shopping</a></a></div>
 		  <!-- Display product information in table -->
 		<div class="table">
@@ -116,7 +118,7 @@
 				?>
 				<tr>
 					<td><?php echo $values["item_name"]; ?></td>
-					<td><input type="number" name="quantity" min="1" max="50" value="<?php echo $values["item_quantity"]; ?>"></td>
+					<td><?php echo $values["item_quantity"]; ?></td>
 					<td>$ <?php echo $values["item_price"]; ?></td>
 					<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
 					<td><a href="cart.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
@@ -130,7 +132,7 @@
 						 <!-- Display price with two decimal places -->
 						<p>Total: &nbsp; &nbsp; $ <?php echo number_format($total, 2); ?></p><br><br>
 						<div class="checkout-btn" name="checkout"><a href="checkout.php" >Proceed to Check Out</a></div>
-						<!-- allow users to checkout or go back to product listing to add items-->
+						<!-- allow users to checkout-->
 				</td>
 				</tr>
 				<?php

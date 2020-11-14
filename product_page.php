@@ -147,7 +147,7 @@
 <!-- PRODUCT MENU STARTS -->
 <div class="main">
   <?php
-  // use array to display products and echo the information of each product
+  // use foreach loop to display products and echo the information of each product
     $products = array();
       while ($rows = mysqli_fetch_array($result))
       {

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'connection.php';
+//store the session data from the form into its unique variables
 $fullname = $_SESSION['fullname'];
 $lastname = $_SESSION['email'];
 $address = $_SESSION['address'];
@@ -108,6 +109,8 @@ $pnumber = $_SESSION['pnumber'];
   <?php
   }
   ?>
+   <!--shopping cart emptied when order is placed-->
+  <?php unset($_SESSION["my_cart"]); ?>
   </table>
  </div>
  </div>
