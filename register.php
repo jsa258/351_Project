@@ -135,9 +135,6 @@ if(isset($_POST['submit']))
       //checks if fields are not empty
        if(!empty($_POST['name']) || !empty($_POST['email']) || !empty($_POST['number']) || !empty($_POST['password'])){
 
-
-
-
         //Password Validation code from https://www.codexworld.com/how-to/validate-password-strength-in-php/?fbclid=IwAR3exHFhciFRFGQZRmKB80DrlNQNtc2leVnlnDqs0zSw5jL3hqn7Zt21n3M
         // Given password
         $password = ($_POST["password"]);
@@ -177,11 +174,7 @@ if(isset($_POST['submit']))
 
         $query2= "INSERT INTO users (email, password, name, phone_no) VALUES (
           '{$email}', '{$hash}', '{$name}', '{$phone_no}')";
-
-
         $result=mysqli_query($connection,$query2);
-
-
 
         if($result)
         {

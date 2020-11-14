@@ -34,7 +34,13 @@ session_start();
                      //store name into session and redirect user to index page
                     $_SESSION['Name']=$row['name'];
                     header("location:index.php");
-                 }
+                 }else
+                 {
+                     //If incorrect password, shows error message on header
+                     header("location:login.php?Invalid= Please Enter Correct User Name and Password ");
+                     echo 'Please Enter Correct User Name and Password!';
+     
+                   }
              }else
             {
                 //If incorrect password, shows error message on header
