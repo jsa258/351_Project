@@ -145,16 +145,19 @@ if(isset($_POST['submit']))
         $lowercase = preg_match('@[a-z]@', $password);
         $passNumber    = preg_match('@[0-9]@', $password);
         $specialChars = preg_match('@[^\w]@', $password);
-        if($uppercase || $lowercase || $passNumber || $specialChars || strlen($password) < 8) {
+        if(!$uppercase || !$lowercase || !$passNumber || !$specialChars || strlen($password) < 8) {
+          // echo '<div class="password-msg">Password should be at least 8 characters in length and <br> should include at least one upper case letter, one number, and one special character.</div>';
+        }else{
+        // echo '<div class="alert-msg">Strong password.</div>';
 
-          //validate email before registering user in db
+        //validate email before registering user in db
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
           //Prevent same email and password for security issue
           if($email==$password){
             echo '<div class="password-msg">Password cannot be the same as email.</div>';
           }else{
         
-            //run query in db to check if email existed
+         //run query in db to check if email existed
         $query="select * from users where email='".$_POST['email']."'";
         $check=mysqli_query($connection,$query);
 
@@ -167,7 +170,7 @@ if(isset($_POST['submit']))
           $email = addslashes($_POST['email']);
           $phone_no = addslashes($_POST['number']);
           $password = addslashes($_POST['password']);
-          
+
           //add hash password to db
           $hash = password_hash($password, PASSWORD_DEFAULT);
 
