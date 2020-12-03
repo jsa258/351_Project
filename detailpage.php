@@ -63,7 +63,12 @@ $result = mysqli_query($connection, $productDetails);
   <!-- PRODUCT DESCRIPTION STARTS -->
   <div class="info-section">
     <div class="img-section">
-    <img src="<?php echo $rows['imageurl']; ?>" alt=" " class="img-placeholder" style="width:75%">
+      <?php
+      $url = $rows['url'];
+      $img = $rows['img_url'];
+      $imgurl = $url.$img;
+      ?>
+    <img src="<?php echo $imgurl ?>" alt=" " class="img-placeholder" style="width:75%">
     <!-- <div class="small-img">
           <div class="img-row">
             <img src="img/1-2.jpg" class="simg-placeholder">
