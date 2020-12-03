@@ -44,21 +44,21 @@
     </ul>
   </nav>
   <!-- NAVIGATION ENDS -->
-
+  <!-- Filters -->
   <div class="filters">
     <h2>PRODUCTS</h2>
     <h3>Consoles</h3>
-   <input type="checkbox" id="all" name="console" value="all" onclick="filterSelection('all')" checked>
+   <input type="checkbox" class="category" id="all" name="console" value="all" onclick="checkFilter()" checked>
    <label for="all">Show All</label><br>
-   <input type="checkbox" id="switch" name="console" value="switch" onclick="filterSelection('switch')">
+   <input type="checkbox" class="category" id="switch" name="console" onclick="checkFilter()" value="switch">
    <label for="switch">Nintendo Switch</label><br>
-   <input type="checkbox" id="xbox" name="console" value="xbox"  onclick="filterSelection('xbox')">
-   <label for="xbox">XBOX ONE</label><br>
-   <input type="checkbox" id="ps4" name="console" value="ps4"  onclick="filterSelection('ps4')">
+   <input type="checkbox" class="category" id="xbox" name="console" onclick="checkFilter()" value="xbox">
+   <label for="xbox">XBOX</label><br>
+   <input type="checkbox" class="category" id="ps4" name="console" value="ps4">
    <label for="ps4">PS4</label><br>
-   <input type="checkbox" id="wiiu" name="console" value="wiiu">
-   <label for="wiiu">Wii U</label><br>
-   <input type="checkbox" id="otherscon" name="console" value="otherscon">
+   <input type="checkbox" class="category" id="Wii" name="console" onclick="checkFilter()" value="Wii">
+   <label for="Wii">Wii</label><br>
+   <input type="checkbox" class="category" id="otherscon" name="console" value="otherscon">
    <label for="otherscon">Others</label><br>
 
    <h3>Genres</h3>
@@ -170,16 +170,66 @@
     </div>
  </div>
  <?php } mysqli_close($connection); ?>
-  </div>
+ <div id="result"> </div>
+</div>
 
-  <?php
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+var result;
+var offset = 6;
+// Initial page load, show all
+$(document).ready(function() {
+    var categories = [];
+    $('.category').each(function() {
+        if ($(this).is(":checked")) {
+            categories.push($(this).val());
+        }
+    });
+    categories = categories.toString();
+// Console testing if the values get added properly
+    var test = {
+        categories: categories,
+    };
+    console.log(test);
+    });
 
-   ?>
+function displayResult(p) {
+  console.log(p);
+}
 
-<?php
+// Each time the check boxes are clicked, check for update
+function checkFilter() {
+  var categories = [];
+  $('.category').each(function() {
+      if ($(this).is(":checked")) {
+          categories.push($(this).val());
+      }
+  });
+  categories = categories.toString();
+// Console testing if the values got added properly
+  var test = {
+      categories: categories,
+  };
+  console.log(test);
 
+  $.ajax({
+      method: "POST",
+      url: "getProductData.php",
+      data: {categories: 'DS' }
 
- ?>
+  }).done(function(data) {
+      console.log(data);
+      result = $.parseJSON(data);
+      console.log(result);
+      if (result.length > 0) {
+          displayResult(0);
+      } else {
+          $("#result").html("<h5>No Products Found</h5>");
+      }
+  });
+}
+</script>
 
   <!--begin footer-->
   <div class="footer">
