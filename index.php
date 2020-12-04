@@ -4,12 +4,12 @@ session_start();
 require 'connection.php'; //connect to database
   $selectorder = "SELECT * FROM games limit 5";
   $result = mysqli_query($connection, $selectorder);
-  
 
   if(isset($_SESSION['ID'])){
     echo $_SESSION['ID'];
-  $showFav = "SELECT * FROM favorites WHERE user_id='".$_SESSION['ID']."' limit 5";
   }
+
+  
   
 ?>
 
@@ -135,88 +135,95 @@ require 'connection.php'; //connect to database
       </div>
    </div>
 
-   <?php } mysqli_close($connection); ?>
+   <?php }  ?>
     </div>
  <!-- FEATURE ITEMS ENDS -->
 
   <!-- PRODUCT SLIDER STARTS -->
   <!--slider-->
- <section class="subheading">
+  <?php if(isset($_SESSION['ID'])){
+    ?>
+  <section class="subheading">
   <h1>Your Favorite Items</h1>
- </section>
- <section class="favproduct">
-  <!--item1-->
-  <section class="fav-item">
-    <div class="box">
-      <div class="slide-img">
-        <img src="img/2-1.jpg">
+  </section>
+  <section class="favproduct">
+  </section>
+  <!-- Products -->
+  <div class="main">
+    <?php
+    // use array to display products and echo the information of each product
+    // $showQuery = "SELECT * FROM favorites WHERE user_id='".$_SESSION['ID']."' limit 5";
+    $showQuery = "SELECT favorites.id, favorites.user_id, games.imageurl, games.genre, games.name, games.price
+                  FROM games
+                  INNER JOIN favorites ON games.id = favorites.id WHERE user_id='".$_SESSION['ID']."' limit 5";
+    
+    $showFav = mysqli_query($connection,$showQuery);
+    
+      $favorites = array();
+
+        while ($rows = mysqli_fetch_array($showFav))
+        {
+            $favorites[] = $rows;
+            
+        }
+        foreach ($favorites as $rows)
+        {
+    ?>
+    <div class="product-item">
+      <div class="product-img slide-img" name="product_image">
+        <a href="detailpage.php?id=<?php echo $rows['id'];?>">
+        <img src="<?php echo $rows['imageurl']; ?>" /></a>
         <div class="overlay">
-          <a href="#" class="buy-btn">Remove</a>
+        <?php 
+        if(isset($_SESSION['ID'])){
+           $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
+           $checkFav=mysqli_query($connection,$checkQuery);
+
+
+            if(mysqli_fetch_assoc($checkFav)){
+              ?>
+             <form method="post">
+             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
+             <input type="submit" name="remove_fav"  class="buy-btn" value="Remove" />
+             </form>
+             <?php
+             
+             if(isset($_POST['remove_fav'])){
+              $itemID = addslashes($_POST['item_id']);
+              $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
+              $removeFav = mysqli_query($connection,$removeQuery);   
+              
+             }
+            }else{
+              ?>
+              <form method="post">
+             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
+             <input type="submit" name="add_fav" class="buy-btn" value="Favorite" />
+             </form>
+              <?php
+              if(isset($_POST['add_fav'])){
+                $itemID = addslashes($_POST['item_id']);
+                $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('$itemID', '".$_SESSION['ID']."')";
+                $addFav = mysqli_query($connection,$addQuery);   
+               }
+            }
+        }else{
+            echo '<a href="login.php" class="buy-btn">Favourite</a>';
+        }
+        ?>
+          
           <a href="#" class="buy-btn">Buy Now</a>
         </div>
       </div>
+      <div class="review">
+      <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>
+     </div>
       <div class="detail-box">
-        <div class="type">
-          <a href="#">Animal Crossing</a>
+          <div class="type" name="hidden_name"><a href="#"><?php echo $rows['name']; ?></a></div>
+        <a href="#" class="price" name="hidden_price">$<?php echo $rows['price']; ?></a>
       </div>
-      <a href="#" class="price">$50</a>
-    </div>
-  </section>
-  <!--item2-->
-  <section class="fav-item">
-    <div class="box">
-      <div class="slide-img">
-        <img src="img/ps41.jpg">
-        <div class="overlay">
-          <a href="#" class="buy-btn">Remove</a>
-          <a href="#" class="buy-btn">Buy Now</a>
-        </div>
-      </div>
-      <div class="detail-box">
-        <div class="type">
-          <a href="#">Spider-man Miles Morales</a>
-      </div>
-      <a href="#" class="price">$50</a>
-    </div>
-    </div>
-  </section>
-  <!--item3-->
-  <section class="fav-item">
-    <div class="box">
-      <div class="slide-img">
-        <img src="img/ps43.jpg">
-        <div class="overlay">
-          <a href="#" class="buy-btn">Remove</a>
-          <a href="#" class="buy-btn">Buy Now</a>
-        </div>
-      </div>
-      <div class="detail-box">
-        <div class="type">
-          <a href="#">Star Wars Squadrons</a>
-      </div>
-      <a href="#" class="price">$50</a>
-    </div>
-    </div>
-  </section>
-  <!--item4-->
-  <section class="fav-item">
-    <div class="box">
-      <div class="slide-img">
-        <img src="img/xbox3.jpg">
-        <div class="overlay">
-          <a href="#" class="buy-btn">Remove</a>
-          <a href="#" class="buy-btn">Buy Now</a>
-        </div>
-      </div>
-      <div class="detail-box">
-        <div class="type">
-          <a href="#">Call of duty</a>
-      </div>
-      <a href="#" class="price">$50</a>
-    </div>
-    </div>
-  </section>
-</section>
+   </div>
+  <?php }} ?>
   <!-- PRODUCT SLIDER ENDS -->
 
 
