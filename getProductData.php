@@ -1,3 +1,14 @@
+
+    <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/products.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    </head>
+    </html>
+
+
 <?php
     $host         = "localhost";
     $username     = "root";
@@ -102,7 +113,9 @@
   } else {
       $output = "<h2>No products found</h2>";
   }
+
     /* send a JSON encded array to client */
     echo $output;
 
     $conn->close();
+?>

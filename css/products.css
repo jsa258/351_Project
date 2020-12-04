@@ -17,8 +17,14 @@ body {
 .product-item{
   margin: 1%;
 }
-/* Center website */
 
+.pagination_link {
+  position: relative;
+  bottom:-10%;
+  left: 15%;
+  width: 160px;
+  text-decoration: none;
+}
 
 /* Add padding BETWEEN each column */
 
