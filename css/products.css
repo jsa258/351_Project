@@ -18,11 +18,11 @@ body {
   margin: 1%;
 }
 
-a.pagination_link {
+span.pagination_link {
   position: relative;
   bottom:-10%;
   left: 30%;
-  width: 160px;
+  width: 20%;
   text-decoration: none;
   padding: -2%;
 }
@@ -55,7 +55,7 @@ a.pagination_link {
 }
 
 .filters {
-  background-color:
+  background-color: #fff;
  /* margin: 0;
  padding: 0;
  width: 200px;
@@ -67,10 +67,6 @@ a.pagination_link {
  width: 20%;
  overflow: hidden; /* Hide scrollbars */
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 .filters::-webkit-scrollbar {
   display: none;
 }
@@ -78,8 +74,4 @@ a.pagination_link {
 .filters {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master

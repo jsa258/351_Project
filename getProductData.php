@@ -106,7 +106,7 @@
       }
       for($i=1; $i<=3; $i++)
       {
-           $output .= "<a href class='pagination_link' id='".$i."'>".$i."</a>";
+           $output .= "<span class='pagination_link' id='".$i."'>".$i."</span>";
       }
       $output .= '</div>';
     }
