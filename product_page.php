@@ -133,7 +133,12 @@
         checkFilter();
       });
 
-      function checkFilter() {
+      $(document).on('click', '.pagination_link', function(){
+        var page = $(this).attr("id");
+        checkFilter(page);
+      });
+
+      function checkFilter(page) {
         // Consoles
         var categories = [];
         $("input[name='console']:checked").each(function(){
@@ -155,41 +160,15 @@
             rating.push(this.value);
         });
 
-        console.log(rating);
-
       $.ajax({
         method: "POST",
         url: "getProductData.php",
-        data: {info:categories,genres:genres,publisher:publisher,rating:rating},
+        data:{info:categories,genres:genres,publisher:publisher,rating:rating,page:page},
+        success:function(data){
+             $('#records').html(data);
+        }
 
-      }).done(function( data ) {
-      try {
-        var result= $.parseJSON(data);
-        console.log(result);
-        var string = "";
-          /* from result create a string of data and append to the div */
-          $.each( result, function( key, value ) {
-            var img = value['url'] + value['img_url'];
-            img = img.replace(/"/g,"");
-
-            string += "<div class='product-item'> \
-            <div class='product-img' name='product_image'> \
-            <a href='detailpage.php?id=" +value['id']+ "'> \
-            <img src=" +img+ "/></a> \
-            </div> \
-            <div class='review'> \
-            <div class='genre' name='genre'>" +value['genre']+ "</div> \
-            </div> \
-            <div class='detail-box'> \
-            <div class='type' name='hidden_name'><a href='detailpage.php?id=" +value['id']+ "'> " +value['name']+ "</a></div> \
-            <a href='#' class='price' name='hidden_price'>$" +value['price']+ "</a> \
-            </div></div>";
-            });
-            $("#records").html(string);
-          } catch(err) {
-            $("#records").html("<h2>No Products Found</h2>");
-          }
-            });
+      })
     }
 
 </script>
