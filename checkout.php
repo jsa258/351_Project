@@ -196,7 +196,7 @@ require 'connection.php';
 //reference from https://stackoverflow.com/questions/3190464/php-check-if-any-posted-vars-are-empty-form-all-fields-required
 if(!isset($_POST['submit'])) exit();
 //when user submit form, check if required fields are filled
-  $require = array('email','address','city','country','province','postalcode','cname','cnumber','expmonth','expyear','cvv');
+  $require = array('fullname','address','city','country','province','postalcode','cname','cnumber','expmonth','expyear','cvv');
   $filled= TRUE;
   foreach($require as $field) {
    if(!isset($_POST[$field]) || empty($_POST[$field])) {
