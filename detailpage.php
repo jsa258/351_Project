@@ -155,7 +155,7 @@ $result = mysqli_query($connection, $productDetails);
               ?>
              <form method="post">
              <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
-             <input type="submit" name="remove_fav"  class="buy-button" value="Remove" />
+             <input type="submit" name="remove_fav"  class="buy-button" value="Remove from Favorite" />
              </form>
              <?php
              //Removes the item from favorite when button is submitted
