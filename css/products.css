@@ -18,11 +18,11 @@ body {
   margin: 1%;
 }
 
-span.pagination_link {
+a.pagination_link {
   position: relative;
   bottom:-10%;
   left: 30%;
-  width: 130px;
+  width: 160px;
   text-decoration: none;
   padding: -2%;
 }
