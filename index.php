@@ -7,6 +7,7 @@ require 'connection.php'; //connect to database
   
 
   if(isset($_SESSION['ID'])){
+    echo $_SESSION['ID'];
   $showFav = "SELECT * FROM favorites WHERE user_id='".$_SESSION['ID']."' limit 5";
   }
   
@@ -89,21 +90,33 @@ require 'connection.php'; //connect to database
            $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
            $checkFav=mysqli_query($connection,$checkQuery);
 
-           $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('".$rows['id']."', '".$_SESSION['ID']."')";
-           $removeQuery = "DELETE FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";           
 
             if(mysqli_fetch_assoc($checkFav)){
               ?>
-              <a href="index.php" class="buy-btn" <?php 
+             <form method="post">
+             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
+             <input type="submit" name="remove_fav"  class="buy-btn" value="Remove" />
+             </form>
+             <?php
+             
+             if(isset($_POST['remove_fav'])){
+              $itemID = addslashes($_POST['item_id']);
+              $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
               $removeFav = mysqli_query($connection,$removeQuery);   
-              ?>  >Remove</a>
-              <?php
+              
+             }
             }else{
               ?>
-              <a href="index.php" class="buy-btn" <?php 
-              $addFav = mysqli_query($connection,$addQuery);   
-              ?>  >Favorite</a>
+              <form method="post">
+             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
+             <input type="submit" name="add_fav" class="buy-btn" value="Favorite" />
+             </form>
               <?php
+              if(isset($_POST['add_fav'])){
+                $itemID = addslashes($_POST['item_id']);
+                $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('$itemID', '".$_SESSION['ID']."')";
+                $addFav = mysqli_query($connection,$addQuery);   
+               }
             }
         }else{
             echo '<a href="login.php" class="buy-btn">Favourite</a>';
