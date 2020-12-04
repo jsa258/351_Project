@@ -3,13 +3,12 @@ session_start();
 require 'connection.php';
 //store the session data from the form into its unique variables
 $fullname = $_SESSION['fullname'];
-$lastname = $_SESSION['email'];
+$email = $_SESSION['email'];
 $address = $_SESSION['address'];
 $city = $_SESSION['city'];
 $country = $_SESSION['country'];
 $province = $_SESSION['province'];
 $postalcode = $_SESSION['postalcode'];
-$email = $_SESSION['email'];
 $pnumber = $_SESSION['pnumber'];
 
 ?>

@@ -96,16 +96,16 @@ $result = mysqli_query($connection, $productDetails);
       <div class="review">
        <i class="fas fa-star"></i>
        <i class="fas fa-star"></i>
+       <i class="fas fa-star"></i>
+       <i class="fas fa-star"></i>
        <i class="far fa-star"></i>
-       <i class="far fa-star"></i>
-       <i class="far fa-star"></i>
-       <p class="reviews">500+ reviews</p>
+       <p class="reviews">Rating: <?php echo $rows['critic_score']; ?></p>
      </div>
     </div>
      <p class="product-price">$<?php echo $rows['price']; ?></p>
      <p class="product-description"><?php echo $rows['genre']; ?></p>
 
-      <p class="product-description">Experience the modernized design of the Xbox Wireless Controller in Robot White, featuring sculpted surfaces and refined geometry for enhanced comfort during gameplay.Stay on target with a hybrid D-pad and textured grip on the triggers, bumpers, and back case. Seamlessly capture and share content such as screenshots, recordings, and more with the new Share button. </p>
+      <p class="product-description"><?php echo $rows['description']; ?></p>
 
       <div class="info-logo">
          <div class="check">
