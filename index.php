@@ -123,7 +123,7 @@ require 'connection.php'; //connect to database
         }
         ?>
           
-          <a href="#" class="buy-btn">Buy Now</a>
+          <a href="detailpage.php?id=<?php echo $rows["id"]; ?>" class="buy-btn">Buy Now</a>
         </div>
       </div>
       <div class="review">
@@ -212,7 +212,7 @@ require 'connection.php'; //connect to database
         }
         ?>
           
-          <a href="#" class="buy-btn">Buy Now</a>
+          <a href="detailpage.php?id=<?php echo $rows["id"]; ?>" class="buy-btn">Buy Now</a>
         </div>
       </div>
       <div class="review">
