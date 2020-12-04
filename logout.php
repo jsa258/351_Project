@@ -4,6 +4,7 @@
 session_start();
 unset($_SESSION["User"]);
 unset($_SESSION["Name"]);
+unset($_SESSION["ID"]);
 header("Location:index.php");
 
 

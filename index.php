@@ -3,7 +3,13 @@
 session_start();
 require 'connection.php'; //connect to database
   $selectorder = "SELECT * FROM games limit 5";
-	$result = mysqli_query($connection, $selectorder);
+  $result = mysqli_query($connection, $selectorder);
+  
+
+  if(isset($_SESSION['ID'])){
+  $showFav = "SELECT * FROM favorites WHERE user_id='".$_SESSION['ID']."' limit 5";
+  }
+  
 ?>
 
 <html lang="en">
@@ -74,9 +80,38 @@ require 'connection.php'; //connect to database
         {
     ?>
     <div class="product-item">
-      <div class="product-img" name="product_image">
+      <div class="product-img slide-img" name="product_image">
         <a href="detailpage.php?id=<?php echo $rows['id'];?>">
         <img src="<?php echo $rows['imageurl']; ?>" /></a>
+        <div class="overlay">
+        <?php 
+        if(isset($_SESSION['ID'])){
+           $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
+           $checkFav=mysqli_query($connection,$checkQuery);
+
+           $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('".$rows['id']."', '".$_SESSION['ID']."')";
+           $removeQuery = "DELETE FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";           
+
+            if(mysqli_fetch_assoc($checkFav)){
+              ?>
+              <a href="index.php" class="buy-btn" <?php 
+              $removeFav = mysqli_query($connection,$removeQuery);   
+              ?>  >Remove</a>
+              <?php
+            }else{
+              ?>
+              <a href="index.php" class="buy-btn" <?php 
+              $addFav = mysqli_query($connection,$addQuery);   
+              ?>  >Favorite</a>
+              <?php
+            }
+        }else{
+            echo '<a href="login.php" class="buy-btn">Favourite</a>';
+        }
+        ?>
+          
+          <a href="#" class="buy-btn">Buy Now</a>
+        </div>
       </div>
       <div class="review">
       <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>

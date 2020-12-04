@@ -9,7 +9,6 @@ session_start();
            //If empty, shows error message on header
             header("location:login.php?Empty= Please enter a email address and password");
             echo 'Please enter a email address and password!';
-
             
        }
        else
@@ -32,7 +31,9 @@ session_start();
                  //verify password entered by user and encrypted password
                  if(password_verify($password,$password_hash)){
                      //store name into session and redirect user to index page
-                    $_SESSION['Name']=$row['name'];
+                     $_SESSION['Name']=$row['name'];
+                     $_SESSION['ID']=$row['user_id'];    
+                     $_SESSION['User']=$_POST['email'];                
                     header("location:index.php");
                  }else
                  {

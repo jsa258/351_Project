@@ -181,6 +181,7 @@ if(isset($_POST['submit']))
           //store email and name to session and echo success when added user to db
           $_SESSION['User']=$_POST['email'];
           $_SESSION['Name']=$_POST['name'];
+          $_SESSION['ID']=$_POST['user_id'];
           echo '<div class="password-msg">Register Successful!</div>';
           echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\" />";
         }
