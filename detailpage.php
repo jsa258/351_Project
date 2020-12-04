@@ -150,7 +150,7 @@ $result = mysqli_query($connection, $productDetails);
         if(isset($_SESSION['ID'])){
            $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
            $checkFav=mysqli_query($connection,$checkQuery);
-
+           //Checks if user have already added this item to their favorite
             if(mysqli_fetch_assoc($checkFav)){
               ?>
              <form method="post">
@@ -158,7 +158,7 @@ $result = mysqli_query($connection, $productDetails);
              <input type="submit" name="remove_fav"  class="buy-button" value="Remove" />
              </form>
              <?php
-             
+             //Removes the item from favorite when button is submitted
              if(isset($_POST['remove_fav'])){
               $itemID = addslashes($_POST['item_id']);
               $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
@@ -172,6 +172,7 @@ $result = mysqli_query($connection, $productDetails);
              <input type="submit" name="add_fav" class="buy-button" value="Favorite" />
              </form>
               <?php
+              //Add the item to favorite when button is submitted
               if(isset($_POST['add_fav'])){
                 $itemID = addslashes($_POST['item_id']);
                 $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('$itemID', '".$_SESSION['ID']."')";
@@ -183,10 +184,6 @@ $result = mysqli_query($connection, $productDetails);
             echo '<a href="login.php" class="buy-button">Favourite</a>';
         }
         ?>
-
-
-
-
     </div>
   </div>
   </div>

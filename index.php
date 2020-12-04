@@ -98,8 +98,9 @@ require 'connection.php'; //connect to database
   <!-- PRODUCT SLIDER STARTS -->
   <!--slider-->
   <?php if(isset($_SESSION['ID'])){
+    //checks if user is logged in
     ?>
-  <section class="subheading">
+  <section class="subheading" id="favorite">
   <h1>Your Favorite Items</h1>
   </section>
   <section class="favproduct">
@@ -107,8 +108,7 @@ require 'connection.php'; //connect to database
   <!-- Products -->
   <div class="main">
     <?php
-    // use array to display products and echo the information of each product
-    // $showQuery = "SELECT * FROM favorites WHERE user_id='".$_SESSION['ID']."' limit 5";
+    //shows the favorite section when user is logged in
     $showQuery = "SELECT favorites.id, favorites.user_id, games.imageurl, games.genre, games.name, games.price
                   FROM games
                   INNER JOIN favorites ON games.id = favorites.id WHERE user_id='".$_SESSION['ID']."' limit 5";
@@ -134,8 +134,7 @@ require 'connection.php'; //connect to database
         if(isset($_SESSION['ID'])){
            $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
            $checkFav=mysqli_query($connection,$checkQuery);
-
-
+           //Checks if user have already added this item to their favorite
             if(mysqli_fetch_assoc($checkFav)){
               ?>
              <form method="post">
@@ -143,7 +142,7 @@ require 'connection.php'; //connect to database
              <input type="submit" name="remove_fav"  class="buy-btn" value="Remove" />
              </form>
              <?php
-             
+            //Removes the item from favorite when button is submitted
              if(isset($_POST['remove_fav'])){
               $itemID = addslashes($_POST['item_id']);
               $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
@@ -151,6 +150,7 @@ require 'connection.php'; //connect to database
               echo "<meta http-equiv='refresh' content='0'>";
              }
             }else{
+              //Add the item to favorite when button is submitted
               ?>
               <form method="post">
              <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
