@@ -5,9 +5,6 @@ require 'connection.php'; //connect to database
   $selectorder = "SELECT * FROM games limit 5";
   $result = mysqli_query($connection, $selectorder);
 
-  if(isset($_SESSION['ID'])){
-    echo $_SESSION['ID'];
-  }
 
   
   
@@ -84,47 +81,6 @@ require 'connection.php'; //connect to database
       <div class="product-img slide-img" name="product_image">
         <a href="detailpage.php?id=<?php echo $rows['id'];?>">
         <img src="<?php echo $rows['imageurl']; ?>" /></a>
-        <div class="overlay">
-        <?php 
-        if(isset($_SESSION['ID'])){
-           $checkQuery = "SELECT * FROM favorites WHERE id='".$rows['id']."' AND user_id='".$_SESSION['ID']."'";
-           $checkFav=mysqli_query($connection,$checkQuery);
-
-
-            if(mysqli_fetch_assoc($checkFav)){
-              ?>
-             <form method="post">
-             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
-             <input type="submit" name="remove_fav"  class="buy-btn" value="Remove" />
-             </form>
-             <?php
-             
-             if(isset($_POST['remove_fav'])){
-              $itemID = addslashes($_POST['item_id']);
-              $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
-              $removeFav = mysqli_query($connection,$removeQuery);   
-              
-             }
-            }else{
-              ?>
-              <form method="post">
-             <input hidden type="text" name="item_id" value="<?php echo $rows['id']; ?>">
-             <input type="submit" name="add_fav" class="buy-btn" value="Favorite" />
-             </form>
-              <?php
-              if(isset($_POST['add_fav'])){
-                $itemID = addslashes($_POST['item_id']);
-                $addQuery = "INSERT INTO favorites (id, user_id) VALUES ('$itemID', '".$_SESSION['ID']."')";
-                $addFav = mysqli_query($connection,$addQuery);   
-               }
-            }
-        }else{
-            echo '<a href="login.php" class="buy-btn">Favourite</a>';
-        }
-        ?>
-          
-          <a href="detailpage.php?id=<?php echo $rows["id"]; ?>" class="buy-btn">Buy Now</a>
-        </div>
       </div>
       <div class="review">
       <div class="genre" name="genre"><?php echo $rows['genre']; ?></div>
@@ -192,7 +148,7 @@ require 'connection.php'; //connect to database
               $itemID = addslashes($_POST['item_id']);
               $removeQuery = "DELETE FROM favorites WHERE id='$itemID' AND user_id='".$_SESSION['ID']."'";
               $removeFav = mysqli_query($connection,$removeQuery);   
-              
+              echo "<meta http-equiv='refresh' content='0'>";
              }
             }else{
               ?>

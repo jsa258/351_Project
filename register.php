@@ -179,11 +179,20 @@ if(isset($_POST['submit']))
         if($result)
         {
           //store email and name to session and echo success when added user to db
-          $_SESSION['User']=$_POST['email'];
-          $_SESSION['Name']=$_POST['name'];
-          $_SESSION['ID']=$_POST['user_id'];
+          // $_SESSION['User']=$_POST['email'];
+          // $_SESSION['Name']=$_POST['name'];
+
+          // $idQuery = "SELECT FROM users WHERE email=$email";
+          // $addId=mysqli_query($connection,$idQuery);
+
+          //   if(mysqli_num_rows($addId)>0){
+          //     $accountId = mysqli_fetch_array($addId);
+          //     $_SESSION['ID']=$accountId['user_id'];
+          //     }
+
+
           echo '<div class="password-msg">Register Successful!</div>';
-          echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\" />";
+          echo "<meta http-equiv=\"refresh\" content=\"2; URL=login.php\" />";
         }
       }
     }
