@@ -104,7 +104,7 @@
              </div>
            ';
       }
-      for($i=1; $i<=5; $i++)
+      for($i=1; $i<=3; $i++)
       {
            $output .= "<span class='pagination_link' id='".$i."'>".$i."</span>";
       }

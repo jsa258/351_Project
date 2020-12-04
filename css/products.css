@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: white;
   padding: 20px;
   height:auto;
 
@@ -18,12 +18,13 @@ body {
   margin: 1%;
 }
 
-.pagination_link {
+span.pagination_link {
   position: relative;
   bottom:-10%;
-  left: 15%;
-  width: 160px;
+  left: 30%;
+  width: 130px;
   text-decoration: none;
+  padding: -2%;
 }
 
 /* Add padding BETWEEN each column */
